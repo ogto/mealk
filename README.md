@@ -23,7 +23,7 @@ Next.js 14 기반으로 제작되었으며, 모바일/데스크탑 반응형 UI,
 | [Tailwind CSS](https://tailwindcss.com/) | 유틸리티 퍼스트 CSS 프레임워크 |
 | [Swiper.js](https://swiperjs.com/react) | 모바일 슬라이더 라이브러리 |
 | [Lucide Icons](https://lucide.dev/) | 경량 벡터 아이콘 세트 |
-| TypeScript | 선택사항 (현재 프로젝트는 JS 기반) |
+| TypeScript | js 는 안씀|
 
 <br/>
 
