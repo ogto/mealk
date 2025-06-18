@@ -4,8 +4,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "밀퀵 브랜드 | Mealkit",
-  description: "간편하고 건강한 밀퀵, 지금 만나보세요.",
+  title: "정채움 | Mealkit",
+  description: "간편하고 건강한 정채움, 지금 만나보세요.",
 };
 
 export default function RootLayout({

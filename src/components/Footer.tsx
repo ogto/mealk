@@ -29,7 +29,7 @@ export default function Footer() {
       {/* Section 2: 모바일 - 아코디언 */}
       <div className="md:hidden border-b py-4 px-6 space-y-4 border-gray-300">
         <AccordionSection title="회사 정보" open={openInfo} onToggle={() => setOpenInfo(!openInfo)}>
-          <p><strong className="text-base text-gray-800">주식회사 밀퀵</strong></p>
+          <p><strong className="text-base text-gray-800">주식회사 정채움</strong></p>
           <p>대표: 신경훈 사업자등록번호: 123-45-67890 통신판매업 신고: 제2025-별내-0615호</p>
           <p>본사: 경기도 부천시 원미로 174</p>
           <p>물류: 경기도 부천시 원미로 174</p>
@@ -57,7 +57,7 @@ export default function Footer() {
       <div className="hidden md:block border-b py-6 border-gray-300">
         <div className="max-w-screen-xl mx-auto px-6 flex justify-between gap-10">
           <address className="not-italic text-sm leading-relaxed text-gray-600">
-            <p><strong className="text-base text-gray-800">주식회사 밀퀵</strong></p>
+            <p><strong className="text-base text-gray-800">주식회사 정채움</strong></p>
             <p>대표: 신경훈 사업자등록번호: 123-45-67890 통신판매업 신고: 제2025-별내-0615호 <a href="#" target="_blank" className="underline text-red-300">[사업자정보확인]</a></p>
             <p>본사: 경기도 부천시 원미로 174</p>
             <p>물류: 경기도 부천시 원미로 174</p>
@@ -89,7 +89,7 @@ export default function Footer() {
       <div className="py-6">
         <div className="max-w-screen-xl mx-auto px-6 flex flex-col gap-4 text-xs text-gray-500">
           <p>
-            주식회사 밀퀵가 운영하는 밀퀵 홈페이지 내 이미지 및 모든 컨텐츠 등은 저작권법 및 콘텐츠산업진흥법에 의해 보호받고 있습니다.<br />
+            주식회사 정채움가 운영하는 정채움 홈페이지 내 이미지 및 모든 컨텐츠 등은 저작권법 및 콘텐츠산업진흥법에 의해 보호받고 있습니다.<br />
             무단 도용 시 민·형사상 책임을 물을 수 있습니다.
           </p>
           <p>

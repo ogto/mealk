@@ -35,7 +35,7 @@ export default function AboutSection() {
         </h2>
 
         <p className="text-base leading-relaxed mb-6 text-gray-700">
-          밀퀵는 바쁜 일상 속에서도 <span className="font-semibold text-gray-900">간편하고 맛있는 식사</span>를 즐길 수 있도록 돕는 브랜드입니다.
+          정채움은 바쁜 일상 속에서도 <span className="font-semibold text-gray-900">간편하고 맛있는 식사</span>를 즐길 수 있도록 돕는 브랜드입니다.
           우리는 재료 선정부터 배송, 조리 편의성까지 고민하며 제품을 만듭니다.
         </p>
 

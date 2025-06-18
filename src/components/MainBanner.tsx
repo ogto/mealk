@@ -21,7 +21,7 @@ export default function MainBanner() {
           modules={[Autoplay, Pagination]}
           slidesPerView="auto"
           centeredSlides={true}
-          spaceBetween={24}
+          spaceBetween={50}
           loop={true}
           grabCursor={true}
           pagination={{ clickable: true }}
@@ -34,9 +34,9 @@ export default function MainBanner() {
           {banners.map((src, index) => (
             <SwiperSlide
               key={index}
-              className="w-[100vw] sm:w-[90vw] max-w-[1400px] mx-auto"
+              className="w-[92vw] sm:w-[80vw] max-w-[980px] mx-auto"
             >
-              <div className="relative w-full h-[440px] sm:h-[520px] md:h-[600px] lg:h-[650px] xl:h-[700px] overflow-hidden shadow-md">
+              <div className="relative w-full h-[240px] sm:h-[320px] md:h-[400px] lg:h-[450px] xl:h-[500px] overflow-hidden shadow-md">
                 <Image
                   src={src}
                   alt={`banner-${index}`}
