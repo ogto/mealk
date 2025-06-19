@@ -8,28 +8,34 @@ const stories = [
     title: <>더욱 신선하게 <span className="text-red-300 font-bold">채움</span></>,
     description: "원산지 확인",
     img: "/images/story/story_1.jpg",
-    href: "#",
+    href: "/",
   },
   {
     title: <>더욱더 건강하게 <span className="text-red-300 font-bold">채움</span></>,
     description: "영양표 확인",
     img: "/images/story/story_2.jpg",
-    href: "#",
+    href: "/",
   },
   {
     title: <>깨끗하게 <span className="text-red-300 font-bold">채움</span></>,
     description: "정채움의 스토리가 더 궁금하다면?",
     img: "/images/story/story_3.jpg",
-    href: "#",
+    href: "/",
   },
 ];
 
 export default function StorySection() {
   return (
-    <section className="w-full bg-white py-16 relative overflow-hidden">
+    <section className="w-full bg-white py-16 relative overflow-hidden" id="story">
       <div className="max-w-[824px] mx-auto px-4 relative">
         {/* 스토리 텍스트 */}
-        <h2 className="text-5xl lg:text-7xl font-bold text-gray-700 mb-10 lg:mb-0 lg:absolute lg:top-10 lg:left-5 z-10">
+        <h2 className="flex items-center gap-3 text-5xl lg:text-7xl font-bold text-gray-700 mb-10 lg:mb-0 lg:absolute lg:top-10 lg:left-5 z-10">
+          <Image
+            src="/images/crt.png"
+            alt="정채움 캐릭터"
+            width={100}
+            height={32}
+          />
           스토리
         </h2>
 
@@ -59,7 +65,6 @@ function StoryCard({ title, description, img, href }: any) {
   return (
     <Link
       href={href}
-      target="_blank"
       className="w-full max-w-[360px] flex flex-col items-center text-center group"
     >
       <div className="w-full h-full bg-white rounded-[50px] overflow-hidden aspect-square relative">

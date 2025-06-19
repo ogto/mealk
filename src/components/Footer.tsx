@@ -30,15 +30,18 @@ export default function Footer() {
       <div className="md:hidden border-b py-4 px-6 space-y-4 border-gray-300">
         <AccordionSection title="회사 정보" open={openInfo} onToggle={() => setOpenInfo(!openInfo)}>
           <p><strong className="text-base text-gray-800">주식회사 정채움</strong></p>
-          <p>대표: 신경훈 사업자등록번호: 123-45-67890 통신판매업 신고: 제2025-별내-0615호</p>
+          <p>대표: 정한철</p>
+          <p>사업자등록번호: 123-45-67890</p>
+          <p>통신판매업 신고: 제2025-별내-0615호</p>
           <p>본사: 경기도 부천시 원미로 174</p>
           <p>물류: 경기도 부천시 원미로 174</p>
-          <p>고객센터: 010-4515-4243 팩스: 010-4515-4243</p>
+            <p>개인정보관리책임자: 정한철</p>
           <p className="mt-2">© 2025 www.mealkit.com All rights reserved.</p>
         </AccordionSection>
 
         <AccordionSection title="고객센터" open={openSupport} onToggle={() => setOpenSupport(!openSupport)}>
-          <h4 className="text-2xl font-semibold text-red-300">010-4515-4243</h4>
+          <h4 className="text-2xl font-semibold text-red-300">042-624-7287</h4>
+          <h4 className="text-2xl font-semibold text-red-300">042-624-7288</h4>
           <a href="#" className="inline-block mt-2 px-4 py-2 border border-red-300 text-red-300 rounded hover:bg-red-300 hover:text-white transition">
             1:1 문의하기
           </a>
@@ -58,17 +61,20 @@ export default function Footer() {
         <div className="max-w-screen-xl mx-auto px-6 flex justify-between gap-10">
           <address className="not-italic text-sm leading-relaxed text-gray-600">
             <p><strong className="text-base text-gray-800">주식회사 정채움</strong></p>
-            <p>대표: 신경훈 사업자등록번호: 123-45-67890 통신판매업 신고: 제2025-별내-0615호 <a href="#" target="_blank" className="underline text-red-300">[사업자정보확인]</a></p>
+            <p>대표: 정한철</p>
+            <p>사업자등록번호: 123-45-67890<a href="#" target="_blank" className="underline text-red-300">[사업자정보확인]</a></p>
+            <p>통신판매업 신고: 제2025-별내-0615호</p>
             <p>본사: 경기도 부천시 원미로 174</p>
             <p>물류: 경기도 부천시 원미로 174</p>
-            <p>고객센터: 010-4515-4243 팩스: 010-4515-4243 개인정보관리책임자: 신경훈</p>
+            <p>개인정보관리책임자: 정한철</p>
             <p className="mt-2">© 2025 www.mealkit.com All rights reserved.</p>
           </address>
 
           <div className="flex flex-col gap-6 text-sm">
             <div>
               <h3 className="font-bold text-gray-800">고객상담센터</h3>
-              <h4 className="text-2xl font-semibold text-red-300">010-4515-4243</h4>
+              <h4 className="text-2xl font-semibold text-red-300">042-624-7287</h4>
+              <h4 className="text-2xl font-semibold text-red-300">042-624-7288</h4>
               <a href="#" className="inline-block mt-2 px-4 py-2 border border-red-300 text-red-300 rounded hover:bg-red-300 hover:text-white transition">
                 1:1 문의하기
               </a>
@@ -89,7 +95,7 @@ export default function Footer() {
       <div className="py-6">
         <div className="max-w-screen-xl mx-auto px-6 flex flex-col gap-4 text-xs text-gray-500">
           <p>
-            주식회사 정채움가 운영하는 정채움 홈페이지 내 이미지 및 모든 컨텐츠 등은 저작권법 및 콘텐츠산업진흥법에 의해 보호받고 있습니다.<br />
+            주식회사 정채움이 운영하는 정채움 홈페이지 내 이미지 및 모든 컨텐츠 등은 저작권법 및 콘텐츠산업진흥법에 의해 보호받고 있습니다.<br />
             무단 도용 시 민·형사상 책임을 물을 수 있습니다.
           </p>
           <p>
