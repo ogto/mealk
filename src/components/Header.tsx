@@ -8,7 +8,7 @@ import { useRef } from 'react';
 
 const navItems = [
   { label: '기업소개', href: '/about' },
-  { label: '기업갤러리', href: '#' },
+  { label: '기업갤러리', href: '/gallery' },
   { label: '브랜드스토리', href: '#' },
   { label: '이벤트', href: '#' },
   { label: '고객센터', href: '#' },
