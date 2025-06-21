@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import DevNote from "@/components/DevNote";
 
 export const metadata: Metadata = {
   title: "정채움 | Mealkit",
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className="w-full">
       <body className="w-full overflow-x-hidden bg-white text-black font-sans">
+        <DevNote />
         <Header />
         <main className="w-full min-h-screen">{children}</main>
         <Footer />

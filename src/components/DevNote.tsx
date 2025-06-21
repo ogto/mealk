@@ -1,45 +1,50 @@
 'use client';
 
 import { useState } from 'react';
-import { X } from 'lucide-react';
+import { Check, X } from 'lucide-react';
 
 export default function DevNote() {
-  const [visible, setVisible] = useState(true);
-
-  if (!visible) return null;
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
-    <div className="fixed top-6 left-6 w-[320px] bg-white border border-gray-300 rounded-lg shadow-lg z-[9999] p-4 text-sm font-sans">
-      <button
-        onClick={() => setVisible(false)}
-        className="absolute -top-4 -right-4 bg-white text-gray-600 hover:text-black rounded-full p-1 shadow"
-        title="닫기"
+    <>
+      {/* 왼쪽 상단 FAB 버튼 */}
+      <div
+        className="fixed top-20 left-4 z-[100] bg-green-600 text-white px-4 py-2 rounded-full shadow-lg cursor-pointer select-none flex items-center gap-2"
+        onClick={() => setIsOpen((prev) => !prev)}
       >
-        <X size={20} />
-      </button>
+        {isOpen ? <X size={16} /> : <Check size={16} />}
+      </div>
 
-      <h2 className="text-lg font-bold text-green-700 mb-3">✅ 개발 완료 페이지</h2>
-      <ul className="space-y-1 text-gray-800">
-        <li>메인페이지</li>
-        <li>로그인</li>
-
-        <li>
-          기업소개
-          <ul className="ml-5 border-l border-gray-300 pl-3 mt-1 space-y-1">
-            <li>↳ 회사소개</li>
-            <li>↳ 대표이사 소개</li>
-            <li>↳ 수상 이력</li>
-            <li>↳ 사회공헌 활동</li>
+      {/* 팝업 목록 패널 */}
+      {isOpen && (
+        <div
+          className="fixed top-30 left-4 z-[100] w-[320px] bg-white border border-gray-300 rounded-lg shadow-lg p-4 text-sm font-sans"
+        >
+          <div className="flex justify-between items-center mb-2">
+            <h2 className="text-lg font-bold text-green-700">✅ 개발 완료 페이지</h2>
+          </div>
+          <ul className="space-y-1 text-gray-800">
+            <li>메인페이지</li>
+            <li>로그인</li>
+            <li>
+              기업소개
+              <ul className="ml-5 border-l border-gray-300 pl-3 mt-1 space-y-1">
+                <li>↳ 회사소개</li>
+                <li>↳ 대표이사 소개</li>
+                <li>↳ 수상 이력</li>
+                <li>↳ 사회공헌 활동</li>
+              </ul>
+            </li>
+            <li>
+              기업갤러리
+              <ul className="ml-5 border-l border-gray-300 pl-3 mt-1 space-y-1">
+                <li>↳ 갤러리 디테일 페이지</li>
+              </ul>
+            </li>
           </ul>
-        </li>
-
-        <li>
-          기업갤러리
-          <ul className="ml-5 border-l border-gray-300 pl-3 mt-1 space-y-1">
-            <li>↳ 갤러리 디테일 페이지</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+        </div>
+      )}
+    </>
   );
 }
