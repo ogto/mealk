@@ -4,11 +4,12 @@ import AboutSection from "@/components/AboutSection";
 import VisualSection from "@/components/company/VisualSection";
 import SubBanner from "@/components/company/SubBanner";
 import StorySection from "@/components/company/StorySection";
-
+import DevNote from "@/components/DevNote";
 
 export default function HomePage() {
   return (
     <div>
+      <DevNote />
       <VisualSection />
       <MainBanner />
       <StorySection />

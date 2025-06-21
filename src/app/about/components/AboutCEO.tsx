@@ -37,9 +37,9 @@ export default function AboutCEO() {
         <table className="w-full table-auto border-t border-b border-gray-200">
           <thead className="bg-green-50 text-green-800 font-semibold">
             <tr>
-              <th className="py-3 px-4 text-left border-b border-gray-200">항목</th>
+              <th className="py-3 px-4 text-left border-b border-gray-200 w-[60px]">항목</th>
               <th className="py-3 px-4 text-left border-b border-gray-200">내용</th>
-              <th className="py-3 px-4 text-left border-b border-gray-200">비고</th>
+              <th className="py-3 px-4 text-left border-b border-gray-200 w-[60px]">비고</th>
             </tr>
           </thead>
           <tbody>
