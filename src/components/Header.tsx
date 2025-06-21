@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
@@ -10,15 +11,16 @@ const navItems = [
   { label: '기업소개', href: '/about' },
   { label: '기업갤러리', href: '/gallery' },
   { label: '브랜드스토리', href: '#' },
-  { label: '이벤트', href: '#' },
   { label: '고객센터', href: '#' },
-  { label: '자주묻는 질문', href: '#' },
+  { label: '제휴', href: '#' },
   { label: '밀키트', href: '#' },
 ];
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const pathname = usePathname();
 
   // 외부 클릭 감지
   useEffect(() => {
@@ -72,8 +74,12 @@ export default function Header() {
             <Link
               key={idx}
               href={item.href}
-              className={`transition hover:text-green-400 ${
-                item.label === '밀키트' ? 'text-red-300' : 'text-gray-800'
+              className={`transition hover:text-green-300 ${
+                item.label === '밀키트'
+                  ? 'text-red-300'
+                  : pathname === item.href
+                    ? 'text-green-500'
+                    : 'text-gray-800'
               }`}
             >
               {item.label}

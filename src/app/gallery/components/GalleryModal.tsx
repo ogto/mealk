@@ -22,7 +22,7 @@ export default function GalleryModal({ data, onClose }: GalleryModalProps) {
             e.stopPropagation();
             onClose();
           }}
-          className="absolute -top-20 -right-0 md:-right-20 z-50"
+          className="absolute -top-20 -right-0 lg:-right-20 z-50"
         >
           <X size={60} className="text-white hover:text-gray-300 transition" />
         </button>

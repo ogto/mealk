@@ -11,7 +11,7 @@ export default function AboutCompany() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="bg-black bg-opacity-50 p-6 rounded-xl text-center"
+          className="bg-black bg-opacity-50 p-6 sm:rounded-xl text-center"
         >
           <div className="flex items-center justify-center gap-2 mb-2">
             <span className="text-4xl font-bold text-white">정성을 채우다,</span>

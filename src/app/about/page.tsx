@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useLayoutEffect  } from 'react';
 import { motion } from 'framer-motion';
 import AboutCompany from './components/AboutCompany';
 import AboutCEO from './components/AboutCEO';
@@ -15,7 +15,7 @@ export default function AboutPage() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const currentTab = tabRefs.current[tabs.indexOf(activeTab)];
     if (currentTab) {
       const { offsetLeft, clientWidth } = currentTab;
