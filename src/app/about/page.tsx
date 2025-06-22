@@ -6,7 +6,7 @@ import AboutCEO from './components/AboutCEO';
 import AboutAwards from './components/AboutAwards';
 import AboutVolunteer from './components/AboutVolunteer';
 
-const tabs = ['회사 소개', '대표이사 소개', '수상 이력', '사회공헌 활동'];
+const tabs = ['기업 소개', '대표이사 소개', '수상 이력', '사회공헌 활동'];
 
 
 export default function AboutPage() {
@@ -25,7 +25,7 @@ export default function AboutPage() {
 
   const renderTabContent = () => {
     switch (activeTab) {
-      case '회사 소개':
+      case '기업 소개':
         return <AboutCompany />;
       case '대표이사 소개':
         return <AboutCEO />;
@@ -48,7 +48,7 @@ export default function AboutPage() {
               tabRefs.current[i] = el;
             }}
             onClick={() => setActiveTab(tab)}
-            className={`pb-3 text-lg font-medium transition-colors cursor-pointer duration-200 ${
+            className={`pb-3 text-lg font-medium transition-colors duration-200 ${
               activeTab === tab ? 'text-green-600' : 'text-gray-500'
             }`}
           >

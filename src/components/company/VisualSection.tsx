@@ -13,7 +13,7 @@ export default function VisualSection() {
             href="#story"
             className="inline-flex items-center text-red-300 hover:text-red-600 transition font-medium text-lg"
           >
-            정채움 스토리 보기 &gt;
+            정채움 스토리 보기 →
           </a>
         </div>
 

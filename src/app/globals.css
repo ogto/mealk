@@ -112,3 +112,11 @@ html, body {
     --foreground: #ededed;
   }
 }
+
+button,
+a,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  cursor: pointer;
+}

@@ -14,7 +14,7 @@ import {
 // nav 항목 정의
 const navItems = [
   { label: "카테고리", icon: "☰", href: "#" },
-  { label: "기업소개", href: "#" },
+  { label: "회사소개", href: "#" },
   { label: "이벤트", href: "#" },
   { label: "이벤트", href: "#" },
 ];

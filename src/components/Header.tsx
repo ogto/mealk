@@ -8,11 +8,11 @@ import { Menu, X } from 'lucide-react';
 import { useRef } from 'react';
 
 const navItems = [
-  { label: '기업소개', href: '/about' },
+  { label: '회사소개', href: '/about' },
   { label: '기업갤러리', href: '/gallery' },
-  { label: '브랜드스토리', href: '#' },
-  { label: '고객센터', href: '#' },
-  { label: '제휴', href: '#' },
+  { label: '브랜드스토리', href: '/brandStory' },
+  { label: '고객센터', href: '/help' },
+  { label: '제휴', href: '/partnership' },
   { label: '밀키트', href: '#' },
 ];
 

@@ -10,7 +10,7 @@ interface GalleryCardProps {
 export default function GalleryCard({ item, onClick }: GalleryCardProps) {
   return (
     <div
-      className="cursor-pointer rounded overflow-hidden shadow-md hover:shadow-xl transition duration-300"
+      className="rounded overflow-hidden shadow-md hover:shadow-xl transition duration-300"
       onClick={() => onClick(item)}
     >
       <img

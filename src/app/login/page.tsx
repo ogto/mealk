@@ -32,7 +32,7 @@ export default function LoginPage() {
         </div>
         <button
           type="submit"
-          className="w-full bg-red-300 text-white py-3 text-base rounded-md font-semibold hover:bg-red-400 cursor-pointer"
+          className="w-full bg-red-300 text-white py-3 text-base rounded-md font-semibold hover:bg-red-400"
         >
           로그인
         </button>
@@ -41,10 +41,10 @@ export default function LoginPage() {
         <div className="text-center text-sm text-gray-400">또는</div>
 
         {/* 소셜 로그인 버튼 */}
-        <button className="w-full py-3 rounded-md text-base text-black bg-[#FEE500] font-semibold cursor-pointer">
+        <button className="w-full py-3 rounded-md text-base text-black bg-[#FEE500] font-semibold">
           카카오로 로그인
         </button>
-        <button className="w-full py-3 rounded-md text-base text-white bg-green-500 font-semibold cursor-pointer">
+        <button className="w-full py-3 rounded-md text-base text-white bg-green-500 font-semibold">
           네이버로 로그인
         </button>
 

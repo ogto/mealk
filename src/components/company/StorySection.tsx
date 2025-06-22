@@ -8,19 +8,19 @@ const stories = [
     title: <>더욱 신선하게 <span className="text-red-300 font-bold">채움</span></>,
     description: "원산지 확인",
     img: "/images/story/story_1.jpg",
-    href: "/",
+    href: "/brandStory"
   },
   {
     title: <>더욱더 건강하게 <span className="text-red-300 font-bold">채움</span></>,
     description: "영양표 확인",
     img: "/images/story/story_2.jpg",
-    href: "/",
+    href: "/brandStory"
   },
   {
     title: <>깨끗하게 <span className="text-red-300 font-bold">채움</span></>,
     description: "정채움의 스토리가 더 궁금하다면?",
     img: "/images/story/story_3.jpg",
-    href: "/",
+    href: "/brandStory",
   },
 ];
 
