@@ -75,8 +75,8 @@ export default function Footer() {
               <h3 className="font-bold text-gray-800">고객상담센터</h3>
               <h4 className="text-2xl font-semibold text-red-300">042-624-7287</h4>
               <h4 className="text-2xl font-semibold text-red-300">042-624-7288</h4>
-              <a href="#" className="inline-block mt-2 px-4 py-2 border border-red-300 text-red-300 rounded hover:bg-red-300 hover:text-white transition">
-                1:1 문의하기
+              <a href="/help?tab=3" className="inline-block mt-2 px-4 py-2 border border-red-300 text-red-300 rounded hover:bg-red-300 hover:text-white transition">
+                1:1 문의
               </a>
               <p className="mt-2 text-gray-500">평일 10:00 ~ 17:00 (점심시간 12:00 ~ 13:00)<br />주말 · 공휴일 휴무</p>
             </div>

@@ -21,7 +21,7 @@ export default function InquiryWritePage() {
   };
 
   return (
-    <div className="min-h-screen bg-white px-4 py-16 max-w-xl mx-auto">
+    <div className="bg-white px-4 py-16 max-w-xl mx-auto">
       <h1 className="text-2xl font-bold text-gray-800 mb-6">1:1 문의 작성</h1>
 
       <form onSubmit={handleSubmit} className="space-y-6">

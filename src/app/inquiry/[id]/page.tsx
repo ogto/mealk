@@ -47,11 +47,11 @@ export default function InquiryDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white px-4 py-16 max-w-3xl mx-auto">
+    <div className="bg-white px-4 py-16 max-w-3xl mx-auto">
       <div className="mb-6">
         <button
           onClick={() => router.push('/help?tab=3')}
-          className="text-sm text-red-400 hover:underline"
+          className="text-md text-red-300"
         >
           ← 목록으로
         </button>

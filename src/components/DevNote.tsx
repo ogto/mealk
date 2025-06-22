@@ -60,6 +60,9 @@ export default function DevNote() {
             <li>
               제휴
             </li>
+            <li>
+              회원가입
+            </li>
           </ul>
         </div>
       )}

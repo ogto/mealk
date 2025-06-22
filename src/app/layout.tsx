@@ -19,7 +19,7 @@ export default function RootLayout({
       <body className="w-full overflow-x-hidden bg-white text-black font-sans">
         <DevNote />
         <Header />
-        <main className="w-full min-h-screen">{children}</main>
+        <main className="w-full min-h-[75vh]">{children}</main>
         <Footer />
       </body>
     </html>

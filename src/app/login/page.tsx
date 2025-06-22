@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4 py-24 md:py-0">
+    <div className="bg-white flex flex-col items-center justify-center px-4 py-24">
       {/* 타이틀 */}
       <h1 className="text-3xl font-bold text-gray-800 mb-2 flex items-center justify-center">
         정성을 채우는 한 끼🍱
@@ -51,7 +51,7 @@ export default function LoginPage() {
         {/* 회원가입 링크 */}
         <div className="text-center text-base mt-4 text-gray-700">
           계정이 없으신가요?{' '}
-          <a href="#" className="text-green-600 font-semibold hover:underline">회원가입</a>
+          <a href="/signup" className="text-red-300 font-semibold hover:underline">회원가입</a>
         </div>
       </form>
       <div className="mt-8 w-full max-w-sm rounded-xl overflow-hidden shadow-lg">
