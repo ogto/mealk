@@ -62,9 +62,10 @@ export default function Header() {
           <Image
             src="/logo/logo2.png"
             alt="정채움 로고"
-            width={130}
-            height={80}
-            className="cursor-pointer"
+            width={0} // 고정값 말고 스타일로 처리할 예정
+            height={0}
+            sizes="100vw"
+            className="cursor-pointer w-[100px] h-[42px] lg:w-[140px] lg:h-[60px]"
           />
         </Link>
 

@@ -4,17 +4,10 @@ import Image from 'next/image';
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4">
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4 py-24 md:py-0">
       {/* 타이틀 */}
       <h1 className="text-3xl font-bold text-gray-800 mb-2 flex items-center justify-center">
-        정성을 채우는 한 끼,
-        <Image
-          src="/logo/logo2.png"
-          alt="정채움 로고"
-          width={100}
-          height={32}
-        />
-        🍱
+        정성을 채우는 한 끼🍱
       </h1>
       <p className="text-base text-gray-600 mb-8">회원 전용 혜택과 간편한 쇼핑을 만나보세요.</p>
 
