@@ -97,7 +97,7 @@ export default function PartnershipForm() {
         type="submit"
         className="w-full bg-red-300 hover:bg-red-400 text-white py-3 rounded-md font-semibold transition-colors"
       >
-        제휴문의 제출하기
+        문의하기
       </button>
     </form>
   );

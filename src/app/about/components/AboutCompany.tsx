@@ -1,8 +1,10 @@
-// ✅ app/about/components/AboutCompany.tsx
 'use client';
 import { motion } from 'framer-motion';
+import { useRouter } from "next/navigation";
 
 export default function AboutCompany() {
+  const router = useRouter();
+
   return (
     <div className="w-full text-gray-800">
       {/* 인트로 섹션 */}
@@ -155,6 +157,7 @@ export default function AboutCompany() {
           whileHover={{ scale: 1.05 }}
           transition={{ type: 'spring', stiffness: 300 }}
           className="px-6 py-3 bg-white text-green-700 font-semibold rounded-full hover:bg-gray-100 transition"
+          onClick={() => router.push("/partnership")}
         >
           제휴 문의하기
         </motion.button>

@@ -59,7 +59,7 @@ export default function InquiryWritePage() {
             type="submit"
             className="bg-red-300 hover:bg-red-400 text-white px-6 py-2 rounded-md text-sm font-semibold"
           >
-            제출하기
+            문의하기
           </button>
         </div>
       </form>

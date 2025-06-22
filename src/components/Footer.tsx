@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="border-b py-4 border-gray-300">
         <div className="max-w-screen-xl mx-auto px-6 flex flex-wrap justify-between gap-6">
           <ul className="space-x-6 flex flex-wrap">
-            <li><a href="#">회사소개</a></li>
+            <li><a href="/about">회사소개</a></li>
             <li><a href="#">이용약관</a></li>
             <li><a href="#">쇼핑몰이용안내</a></li>
             <li><a href="#" className="font-bold">개인정보처리방침</a></li>
