@@ -29,7 +29,7 @@ export default function HelpPage() {
   };
 
   return (
-    <div className="bg-white px-4 py-16 max-w-[1280px] mx-auto">
+    <div className="bg-white min-h-screen px-4 py-16 max-w-[1280px] mx-auto">
       <h1 className="text-3xl font-bold mb-8 text-center text-black">고객센터</h1>
 
       {/* 탭 버튼 */}
