@@ -1,18 +1,15 @@
-// /src/firebase/firebase.js
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { initializeApp } from 'firebase/app'
+import { getAuth } from 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: 'YOUR_API_KEY',
-  authDomain: 'YOUR_PROJECT.firebaseapp.com',
-  projectId: 'YOUR_PROJECT_ID',
-  storageBucket: 'YOUR_PROJECT.appspot.com',
-  messagingSenderId: '...',
-  appId: '...',
+  apiKey: "AIzaSyDf71zFwsEXjCkD_PysWU_hGCazsXD3wq0",
+  authDomain: "mealkit-92750.firebaseapp.com",
+  projectId: "mealkit-92750",
+  storageBucket: "mealkit-92750.firebasestorage.app",
+  messagingSenderId: "43632864720",
+  appId: "1:43632864720:web:d51a7c330d0153d2c05dd5",
+  measurementId: "G-2H5Q4CEQG2"
 };
 
 const app = initializeApp(firebaseConfig);
-
-export const auth = getAuth(app);
-export const db = getFirestore(app);
+export const auth = getAuth(app)

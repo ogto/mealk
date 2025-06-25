@@ -25,8 +25,8 @@ export default function DevNote() {
             <h2 className="text-lg font-bold text-green-700">✅ 개발 완료 페이지</h2>
           </div>
           <ul className="space-y-1 text-gray-800">
-            <li>메인페이지</li>
-            <li>로그인</li>
+            <li>☑️ 메인 페이지 (카테고리 수정 필요)</li>
+            <li>✔️ 로그인 (기능완료)</li>
             <li>
               회사소개
               <ul className="ml-5 border-l border-gray-300 pl-3 mt-1 space-y-1">
@@ -35,6 +35,9 @@ export default function DevNote() {
                 <li>↳ 수상 이력</li>
                 <li>↳ 사회공헌 활동</li>
               </ul>
+            </li>
+            <li>
+              ESG
             </li>
             <li>
               기업갤러리
@@ -48,9 +51,9 @@ export default function DevNote() {
             <li>
               고객센터
               <ul className="ml-5 border-l border-gray-300 pl-3 mt-1 space-y-1">
-                <li>↳ 자주 묻는 질문</li>
+                <li>↳ 자주묻는 질문</li>
                 <li>↳ 공지사항</li>
-                <li>↳ 1:1문의</li>
+                <li>↳ ☑️ 1:1문의 (기능 개발중)</li>
                 <ul className="ml-5 border-l border-gray-300 pl-3 mt-1 space-y-1">
                   <li>↳ 문의 작성</li>
                   <li>↳ 문의 상세</li>
@@ -58,10 +61,10 @@ export default function DevNote() {
               </ul>
             </li>
             <li>
-              제휴
+              ☑️ 제휴 (기능 개발중)
             </li>
             <li>
-              회원가입
+              ✔️ 회원가입 (기능완료)
             </li>
           </ul>
         </div>

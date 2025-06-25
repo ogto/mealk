@@ -1,8 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { toast } from 'react-hot-toast'
+import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from 'firebase/auth'
+import { auth } from '@/firebase/firebase'
 
 export default function SignUpForm() {
+  const router = useRouter()
+
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -20,6 +26,8 @@ export default function SignUpForm() {
     confirmPassword: '',
     phone: '',
   })
+
+  const [showConfirmModal, setShowConfirmModal] = useState(false)
 
   const validateSingleField = (field: string, value: string): string => {
     switch (field) {
@@ -58,6 +66,7 @@ export default function SignUpForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+
     const fieldsToValidate = ['email', 'password', 'confirmPassword', 'phone']
     const newErrors = { ...errors }
 
@@ -70,20 +79,48 @@ export default function SignUpForm() {
 
     setErrors(newErrors)
     const hasError = Object.values(newErrors).some(e => e)
-    if (!hasError) {
-      console.log('✅ 회원가입 성공:', form)
+    if (hasError) {
+      toast.error('입력값을 다시 확인해주세요.')
+      return
+    }
+
+    if (!form.agreeTerms) {
+      toast.error('개인정보 수집 동의는 필수입니다.')
+      return
+    }
+
+    // 유효성 검사를 통과했으면 모달 띄우기
+    setShowConfirmModal(true)
+  }
+
+  const handleConfirm = async () => {
+    setShowConfirmModal(false)
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, form.email, form.password)
+
+      await updateProfile(userCredential.user, { displayName: form.name })
+
+      await sendEmailVerification(userCredential.user)
+
+      toast.success('[회원가입완료] 이메일 인증을 진행해주세요.')
+      router.push('/login')
+    } catch (err: any) {
+      if (err.code === 'auth/email-already-in-use') {
+        toast.error('이미 가입된 이메일입니다.')
+      } else {
+        toast.error('회원가입 중 오류가 발생했습니다.')
+      }
     }
   }
 
   return (
-    <div className="w-full max-w-xl mx-auto">
-
+    <div className="w-full max-w-xl mx-auto relative">
       <h2 className="text-3xl font-bold text-gray-900 mb-10">회원가입</h2>
 
       <form className="space-y-6 w-full" onSubmit={handleSubmit}>
         <Input
           label="이메일 주소"
-          placeholder=""
           value={form.email}
           error={errors.email}
           onChange={val => handleChange('email', val)}
@@ -92,7 +129,6 @@ export default function SignUpForm() {
         <Input
           label="비밀번호"
           type="password"
-          placeholder=""
           value={form.password}
           error={errors.password}
           onChange={val => handleChange('password', val)}
@@ -101,7 +137,6 @@ export default function SignUpForm() {
         <Input
           label="비밀번호 확인"
           type="password"
-          placeholder=""
           value={form.confirmPassword}
           error={errors.confirmPassword}
           onChange={val => handleChange('confirmPassword', val)}
@@ -109,13 +144,11 @@ export default function SignUpForm() {
         />
         <Input
           label="이름"
-          placeholder=""
           value={form.name}
           onChange={val => handleChange('name', val)}
         />
         <Input
           label="휴대폰 번호"
-          placeholder=""
           value={form.phone}
           error={errors.phone}
           onChange={val => handleChange('phone', val)}
@@ -123,7 +156,6 @@ export default function SignUpForm() {
         />
         <Input
           label="추천인 코드 (선택)"
-          placeholder=""
           value={form.referralCode}
           onChange={val => handleChange('referralCode', val)}
         />
@@ -163,13 +195,37 @@ export default function SignUpForm() {
           </a>
         </p>
       </form>
+
+      {showConfirmModal && (
+        <div className="fixed inset-0 bg-opacity-30 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-2xl shadow-xl text-center space-y-4 w-80">
+            <h3 className="text-lg font-semibold text-gray-800">회원가입 확인</h3>
+            <p className="text-sm text-gray-600">회원가입을 진행하시겠습니까?</p>
+            <div className="flex justify-center gap-4 mt-4">
+              <button
+                className="px-4 py-2 bg-gray-200 text-black rounded-lg hover:bg-gray-300 text-sm"
+                onClick={() => setShowConfirmModal(false)}
+              >
+                취소
+              </button>
+              <button
+                className="px-4 py-2 bg-red-300 text-white rounded-lg hover:bg-red-400 text-sm"
+                onClick={handleConfirm}
+              >
+                확인
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
 
+// Input 컴포넌트
 function Input({
   label,
-  placeholder,
+  placeholder = '',
   type = 'text',
   value,
   error,
@@ -177,7 +233,7 @@ function Input({
   onBlur,
 }: {
   label: string
-  placeholder: string
+  placeholder?: string
   type?: string
   value: string
   error?: string
@@ -193,7 +249,7 @@ function Input({
         value={value}
         onChange={e => onChange(e.target.value)}
         onBlur={onBlur}
-        className={`w-full px-3 py-3 border text-sm rounded-md text-black placeholder-gray-400 focus:outline-none focus:ring-2 ${
+        className={`w-full px-3 py-3 border text-lg rounded-md text-black placeholder-gray-400 focus:outline-none focus:ring-2 ${
           error
             ? 'border-red-500 focus:ring-red-400'
             : 'border-gray-300 focus:ring-blue-500'
