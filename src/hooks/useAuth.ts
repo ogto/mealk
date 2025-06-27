@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { onAuthStateChanged, signOut, User } from 'firebase/auth'
+import { setPersistence, onAuthStateChanged, signOut, User, browserSessionPersistence } from 'firebase/auth'
 import { auth } from '@/firebase/firebase'
 
 export default function useAuth() {
@@ -7,23 +7,31 @@ export default function useAuth() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      if (firebaseUser) {
-        if (!firebaseUser.emailVerified) {
-          signOut(auth) // 이메일 인증 안 했으면 강제 로그아웃
+    const init = async () => {
+      await setPersistence(auth, browserSessionPersistence)
+
+      const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+        if (firebaseUser && !firebaseUser.emailVerified) {
+          await signOut(auth)
           setUser(null)
           setLoading(false)
           return
         }
+
         setUser(firebaseUser)
         setLoading(false)
-      } else {
-        setUser(null)
-        setLoading(false)
-      }
-    })
+      })
 
-    return () => unsubscribe()
+      return unsubscribe
+    }
+
+    const unsubscribePromise = init()
+
+    return () => {
+      unsubscribePromise.then((unsubscribe) => {
+        if (unsubscribe) unsubscribe()
+      })
+    }
   }, [])
 
   return { user, loading }
