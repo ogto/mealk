@@ -53,15 +53,15 @@ export default function DevNote() {
               <ul className="ml-5 border-l border-gray-300 pl-3 mt-1 space-y-1">
                 <li>↳ 자주묻는 질문</li>
                 <li>↳ 공지사항</li>
-                <li>↳ ☑️ 1:1문의 (기능 개발중)</li>
+                <li>↳ ✔️ 1:1문의 (기능 완료)</li>
                 <ul className="ml-5 border-l border-gray-300 pl-3 mt-1 space-y-1">
                   <li>↳ 문의 작성</li>
-                  <li>↳ 문의 상세</li>
+                  <li>↳ 문의 상세 (관리자 답변)</li>
                 </ul>
               </ul>
             </li>
             <li>
-              ☑️ 제휴 (기능 개발중)
+              ✔️ 제휴 (기능완료)
             </li>
             <li>
               ✔️ 회원가입 (기능완료)

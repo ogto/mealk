@@ -1,24 +1,64 @@
-// app/inquiry/write/page.tsx
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { db } from "@/firebase/firebase";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default function InquiryWritePage() {
   const router = useRouter();
+  const auth = getAuth();
 
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
   const [form, setForm] = useState({ subject: "", content: "" });
+
+  // 로그인 여부 체크
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+        setLoading(false);
+      } else {
+        router.replace("/login"); // 로그인 페이지로 강제 이동
+      }
+    });
+
+    return () => unsubscribe();
+  }, [auth, router]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("제출된 문의:", form);
-    alert("문의가 등록되었습니다.");
-    router.push("/help?tab=3");
+
+    try {
+      console.log(user)
+      await addDoc(collection(db, "inquiries"), {
+        subject: form.subject,
+        content: form.content,
+        createdAt: Timestamp.now(),
+        status: "처리 중",
+        answer: "",
+        userId: user?.uid,
+        userEmail: user?.email,
+        name: user?.displayName
+      });
+
+      alert("문의가 등록되었습니다.");
+      router.push("/help?tab=3");
+    } catch (error) {
+      console.error("문의 등록 실패:", error);
+      alert("등록에 실패하였습니다. 다시 시도해주세요.");
+    }
   };
+
+  if (loading) {
+    return <div className="text-center py-16">로딩 중...</div>;
+  }
 
   return (
     <div className="bg-white px-4 py-16 max-w-xl mx-auto">

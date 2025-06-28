@@ -1,5 +1,6 @@
 "use client";
 
+import emailjs from "emailjs-com";
 import { useState } from "react";
 
 export default function PartnershipForm() {
@@ -15,17 +16,23 @@ export default function PartnershipForm() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("제휴문의 제출됨:", form);
-    alert("제휴문의가 제출되었습니다. 감사합니다.");
-    setForm({
-      company: "",
-      name: "",
-      phone: "",
-      email: "",
-      message: "",
-    });
+
+    try {
+      await emailjs.send(
+        "service_b1u0rl4",
+        "template_e30h1pu",
+        form,
+        "hG505FSOpjZtkH2Ox"
+      );
+
+      alert("제휴문의가 성공적으로 제출되었습니다.");
+      setForm({ company: "", name: "", phone: "", email: "", message: "" });
+    } catch (error) {
+      console.error("이메일 발송 오류:", error);
+      alert("제출에 실패하였습니다. 다시 시도해주세요.");
+    }
   };
 
   return (
