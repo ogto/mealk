@@ -1,4 +1,8 @@
-import { notFound } from "next/navigation";
+// src/app/news/[id]/page.tsx
+
+"use client";
+
+import { useParams } from "next/navigation";
 import Image from "next/image";
 
 const newsList = [
@@ -7,46 +11,31 @@ const newsList = [
     title: "신규 밀키트 출시! 더 맛있고 간편하게",
     date: "2025.02.01",
     imageUrl: "/images/sub_banner.png",
-    content: `정채움의 새로운 밀키트를 지금 만나보세요.
-
-더 풍부해진 맛과 간편한 조리로 돌아왔습니다.`,
+    content: `정채움의 새로운 밀키트를 지금 만나보세요.\n\n더 풍부해진 맛과 간편한 조리로 돌아왔습니다.`,
   },
   {
     id: 2,
     title: "정채움 브랜드 스토리 공개",
     date: "2025.01.20",
     imageUrl: "/images/crt.png",
-    content: `정채움이 걸어온 길, 그리고 앞으로의 이야기.
-
-브랜드 스토리를 영상으로 확인해보세요.`,
+    content: `정채움이 걸어온 길, 그리고 앞으로의 이야기.\n\n브랜드 스토리를 영상으로 확인해보세요.`,
   },
   {
     id: 3,
     title: "1월 리뷰 이벤트 진행 중!",
     date: "2025.01.05",
     imageUrl: "/images/hello.png",
-    content: `리뷰 작성하고 푸짐한 경품을 받아가세요.
-
-참여 기간: 1월 1일 ~ 1월 31일`,
+    content: `리뷰 작성하고 푸짐한 경품을 받아가세요.\n\n참여 기간: 1월 1일 ~ 1월 31일`,
   },
 ];
 
-interface PageProps {
-  params: { id: string }
-}
-
-export async function generateStaticParams() {
-  return newsList.map((news) => ({
-    id: news.id.toString(),
-  }))
-}
-
-export default async function NewsDetailPage({ params }: PageProps) {
-  const newsId = parseInt(params.id);
+export default function NewsDetailPage() {
+  const { id } = useParams<{ id: string }>();
+  const newsId = parseInt(id);
   const news = newsList.find((item) => item.id === newsId);
 
   if (!news) {
-    notFound();
+    return <div className="text-center py-20 text-gray-500">존재하지 않는 게시글입니다.</div>;
   }
 
   return (
