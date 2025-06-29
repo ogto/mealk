@@ -35,7 +35,7 @@ interface PageProps {
   params: { id: string }
 }
 
-export default function NewsDetailPage({ params }: PageProps) {
+export default async function NewsDetailPage({ params }: PageProps) {
 
   const newsId = parseInt(params.id);
   const news = newsList.find((item) => item.id === newsId);
