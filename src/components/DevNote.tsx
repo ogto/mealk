@@ -27,6 +27,8 @@ export default function DevNote() {
           <ul className="space-y-1 text-gray-800">
             <li>☑️ 메인 페이지 (카테고리 수정 필요)</li>
             <li>✔️ 로그인 (기능완료)</li>
+            <li>✔️ 비밀번호 찾기 (기능완료)</li>
+            <li>✔️ 내정보 (기능완료)</li>
             <li>
               회사소개
               <ul className="ml-5 border-l border-gray-300 pl-3 mt-1 space-y-1">
@@ -65,6 +67,21 @@ export default function DevNote() {
             </li>
             <li>
               ✔️ 회원가입 (기능완료)
+            </li>
+            <li>
+              새소식
+              <ul className="ml-5 border-l border-gray-300 pl-3 mt-1 space-y-1">
+                <li>↳ 새소식 상세 페이지</li>
+              </ul>
+            </li>
+            <li>
+              이용약관
+            </li>
+            <li>
+              마케팅 수신 동의
+            </li>
+            <li>
+              개인정보처리방침
             </li>
           </ul>
         </div>

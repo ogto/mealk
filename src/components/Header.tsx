@@ -67,7 +67,7 @@ export default function Header() {
         ) : (
           <>
             <Link href="/login" className="hover:text-red-300">로그인</Link>
-            <Link href="#" className="hover:text-red-300">새소식</Link>
+            <Link href="/new" className="hover:text-red-300">새소식</Link>
           </>
         )}
       </div>
@@ -128,27 +128,36 @@ export default function Header() {
 
         {/* 모바일 로그인/로그아웃 */}
         <div className="mt-auto px-6 pt-8 pb-10 border-t border-gray-200 text-base">
-          {!loading && user ? (
-            <>
-              <span className="block text-lg font-bold mb-3 text-green-500">{user.displayName || user.email}</span>
-              <button onClick={() => { handleLogout(); setMenuOpen(false) }} className="block text-lg font-bold hover:underline mb-3">
-                로그아웃
-              </button>
-              <Link href="#" onClick={() => setMenuOpen(false)} className="block text-lg font-bold hover:underline">
-                새소식
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link href="/login" onClick={() => setMenuOpen(false)} className="block text-lg font-bold hover:underline mb-3">
-                로그인
-              </Link>
-              <Link href="#" onClick={() => setMenuOpen(false)} className="block text-lg font-bold hover:underline">
-                새소식
-              </Link>
-            </>
-          )}
-        </div>
+  {!loading && user ? (
+    <>
+      <Link
+        href="/my-page"
+        onClick={() => setMenuOpen(false)}
+        className="block text-lg font-bold mb-3 text-green-500 hover:underline"
+      >
+        {user.displayName || user.email}
+      </Link>
+
+      <button onClick={() => { handleLogout(); setMenuOpen(false) }} className="block text-lg font-bold hover:underline mb-3">
+        로그아웃
+      </button>
+
+      <Link href="/new" onClick={() => setMenuOpen(false)} className="block text-lg font-bold hover:underline">
+        새소식
+      </Link>
+    </>
+  ) : (
+    <>
+      <Link href="/login" onClick={() => setMenuOpen(false)} className="block text-lg font-bold hover:underline mb-3">
+        로그인
+      </Link>
+      <Link href="/new" onClick={() => setMenuOpen(false)} className="block text-lg font-bold hover:underline">
+        새소식
+      </Link>
+    </>
+  )}
+</div>
+
       </div>
     </header>
   )
@@ -170,13 +179,13 @@ function UserDropdown({ user, onLogout }: { user: any, onLogout: () => void }) {
 
       <HeadlessMenu.Items className="absolute right-0 mt-2 w-40 origin-top-right bg-white border border-gray-200 rounded-md shadow-lg focus:outline-none z-50">
         <div className="py-1">
-          <HeadlessMenu.Item as="a" href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">
+          <HeadlessMenu.Item as="a" href="/my-page" className="block px-4 py-2 text-sm hover:bg-gray-100">
             내정보
           </HeadlessMenu.Item>
           <HeadlessMenu.Item as="button" onClick={onLogout} className="w-full text-left block px-4 py-2 text-sm hover:bg-gray-100">
             로그아웃
           </HeadlessMenu.Item>
-          <HeadlessMenu.Item as="a" href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">
+          <HeadlessMenu.Item as="a" href="/new" className="block px-4 py-2 text-sm hover:bg-gray-100">
             새소식
           </HeadlessMenu.Item>
         </div>

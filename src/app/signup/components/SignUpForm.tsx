@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { toast } from 'react-hot-toast'
 import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from 'firebase/auth'
 import { auth } from '@/firebase/firebase'
+import Link from 'next/link'
 
 export default function SignUpForm() {
   const router = useRouter()
@@ -16,7 +17,9 @@ export default function SignUpForm() {
     name: '',
     phone: '',
     referralCode: '',
-    agreeTerms: false,
+    agreeAll: false,
+    agreeTermsOfUse: false,
+    agreePrivacy: false,
     agreeMarketing: false,
   })
 
@@ -32,28 +35,35 @@ export default function SignUpForm() {
   const validateSingleField = (field: string, value: string): string => {
     switch (field) {
       case 'email':
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-          ? ''
-          : '올바른 메일 형식으로 입력해주세요.'
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? '' : '올바른 메일 형식으로 입력해주세요.'
       case 'password':
-        return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&]).{8,}$/.test(value)
-          ? ''
-          : '최소 8자의 영문, 숫자, 특수문자를 입력해주세요.'
+        return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&]).{8,}$/.test(value) ? '' : '최소 8자의 영문, 숫자, 특수문자를 입력해주세요.'
       case 'confirmPassword':
-        return value === form.password
-          ? ''
-          : '비밀번호와 비밀번호 확인이 일치하지 않습니다.'
+        return value === form.password ? '' : '비밀번호와 비밀번호 확인이 일치하지 않습니다.'
       case 'phone':
-        return /^\d{10,11}$/.test(value)
-          ? ''
-          : '올바른 휴대폰 번호를 입력해주세요.'
+        return /^\d{10,11}$/.test(value) ? '' : '올바른 휴대폰 번호를 입력해주세요.'
       default:
         return ''
     }
   }
 
+  const handleAllChange = (checked: boolean) => {
+    setForm(prev => ({
+      ...prev,
+      agreeAll: checked,
+      agreeTermsOfUse: checked,
+      agreePrivacy: checked,
+      agreeMarketing: checked,
+    }))
+  }
+
   const handleChange = (field: string, value: string | boolean) => {
-    setForm(prev => ({ ...prev, [field]: value }))
+    setForm(prev => {
+      const updated = { ...prev, [field]: value }
+
+      const isAllChecked = updated.agreeTermsOfUse && updated.agreePrivacy && updated.agreeMarketing
+      return { ...updated, agreeAll: isAllChecked }
+    })
   }
 
   const handleBlur = (field: string) => {
@@ -84,12 +94,11 @@ export default function SignUpForm() {
       return
     }
 
-    if (!form.agreeTerms) {
-      toast.error('개인정보 수집 동의는 필수입니다.')
+    if (!form.agreeTermsOfUse || !form.agreePrivacy) {
+      toast.error('필수 약관 동의가 필요합니다.')
       return
     }
 
-    // 유효성 검사를 통과했으면 모달 띄우기
     setShowConfirmModal(true)
   }
 
@@ -119,80 +128,51 @@ export default function SignUpForm() {
       <h2 className="text-3xl font-bold text-gray-900 mb-10">회원가입</h2>
 
       <form className="space-y-6 w-full" onSubmit={handleSubmit}>
-        <Input
-          label="이메일 주소"
-          value={form.email}
-          error={errors.email}
-          onChange={val => handleChange('email', val)}
-          onBlur={() => handleBlur('email')}
-        />
-        <Input
-          label="비밀번호"
-          type="password"
-          value={form.password}
-          error={errors.password}
-          onChange={val => handleChange('password', val)}
-          onBlur={() => handleBlur('password')}
-        />
-        <Input
-          label="비밀번호 확인"
-          type="password"
-          value={form.confirmPassword}
-          error={errors.confirmPassword}
-          onChange={val => handleChange('confirmPassword', val)}
-          onBlur={() => handleBlur('confirmPassword')}
-        />
-        <Input
-          label="이름"
-          value={form.name}
-          onChange={val => handleChange('name', val)}
-        />
-        <Input
-          label="휴대폰 번호"
-          value={form.phone}
-          error={errors.phone}
-          onChange={val => handleChange('phone', val)}
-          onBlur={() => handleBlur('phone')}
-        />
-        <Input
-          label="추천인 코드 (선택)"
-          value={form.referralCode}
-          onChange={val => handleChange('referralCode', val)}
-        />
+        <Input label="이메일 주소" value={form.email} error={errors.email} onChange={val => handleChange('email', val)} onBlur={() => handleBlur('email')} />
+        <Input label="비밀번호" type="password" value={form.password} error={errors.password} onChange={val => handleChange('password', val)} onBlur={() => handleBlur('password')} />
+        <Input label="비밀번호 확인" type="password" value={form.confirmPassword} error={errors.confirmPassword} onChange={val => handleChange('confirmPassword', val)} onBlur={() => handleBlur('confirmPassword')} />
+        <Input label="이름" value={form.name} onChange={val => handleChange('name', val)} />
+        <Input label="휴대폰 번호" value={form.phone} error={errors.phone} onChange={val => handleChange('phone', val)} onBlur={() => handleBlur('phone')} />
+        <Input label="추천인 코드 (선택)" value={form.referralCode} onChange={val => handleChange('referralCode', val)} />
 
+        {/* 약관 체크박스 */}
         <div className="space-y-2 text-sm text-gray-700">
-          <label className="flex items-center">
-            <input
-              type="checkbox"
-              className="mr-2 scale-150 cursor-pointer"
-              checked={form.agreeTerms}
-              onChange={e => handleChange('agreeTerms', e.target.checked)}
-            />
-            [필수] 개인정보 수집 및 이용 동의
+          <label className="flex items-start space-x-2 font-semibold">
+            <input type="checkbox" className="mt-1 scale-150 cursor-pointer" checked={form.agreeAll} onChange={e => handleAllChange(e.target.checked)} />
+            <span>전체 동의</span>
           </label>
-          <label className="flex items-center">
-            <input
-              type="checkbox"
-              className="mr-2 scale-150 cursor-pointer"
-              checked={form.agreeMarketing}
-              onChange={e => handleChange('agreeMarketing', e.target.checked)}
-            />
-            [선택] 마케팅 수신 동의
+
+          <label className="flex items-start space-x-2">
+            <input type="checkbox" className="mt-1 scale-150 cursor-pointer" checked={form.agreeTermsOfUse} onChange={e => handleChange('agreeTermsOfUse', e.target.checked)} />
+            <span>
+              [필수] <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">이용약관</a> 동의
+            </span>
+          </label>
+
+          <label className="flex items-start space-x-2">
+            <input type="checkbox" className="mt-1 scale-150 cursor-pointer" checked={form.agreePrivacy} onChange={e => handleChange('agreePrivacy', e.target.checked)} />
+            <span>
+              [필수] <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">개인정보 수집 및 이용</a> 동의
+            </span>
+          </label>
+
+          <label className="flex items-start space-x-2">
+            <input type="checkbox" className="mt-1 scale-150 cursor-pointer" checked={form.agreeMarketing} onChange={e => handleChange('agreeMarketing', e.target.checked)} />
+            <span>
+              [선택] <a href="/marketing" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">마케팅 수신</a> 동의
+            </span>
           </label>
         </div>
 
-        <button
-          type="submit"
-          className="w-full py-3 bg-red-300 text-white rounded-lg text-base font-semibold hover:bg-red-400 transition"
-        >
+        <button type="submit" className="w-full py-3 bg-red-300 text-white rounded-lg text-base font-semibold hover:bg-red-400 transition">
           계정 만들기
         </button>
 
         <p className="text-center text-sm text-gray-500">
           이미 계정이 있으신가요?{' '}
-          <a href="/login" className="text-red-300 font-medium hover:underline">
+          <Link href="/login" className="text-red-300 font-medium hover:underline">
             로그인
-          </a>
+          </Link>
         </p>
       </form>
 
@@ -202,16 +182,10 @@ export default function SignUpForm() {
             <h3 className="text-lg font-semibold text-gray-800">회원가입 확인</h3>
             <p className="text-sm text-gray-600">회원가입을 진행하시겠습니까?</p>
             <div className="flex justify-center gap-4 mt-4">
-              <button
-                className="px-4 py-2 bg-gray-200 text-black rounded-lg hover:bg-gray-300 text-sm"
-                onClick={() => setShowConfirmModal(false)}
-              >
+              <button className="px-4 py-2 bg-gray-200 text-black rounded-lg hover:bg-gray-300 text-sm" onClick={() => setShowConfirmModal(false)}>
                 취소
               </button>
-              <button
-                className="px-4 py-2 bg-red-300 text-white rounded-lg hover:bg-red-400 text-sm"
-                onClick={handleConfirm}
-              >
+              <button className="px-4 py-2 bg-red-300 text-white rounded-lg hover:bg-red-400 text-sm" onClick={handleConfirm}>
                 확인
               </button>
             </div>
@@ -249,11 +223,7 @@ function Input({
         value={value}
         onChange={e => onChange(e.target.value)}
         onBlur={onBlur}
-        className={`w-full px-3 py-3 border text-lg rounded-md text-black placeholder-gray-400 focus:outline-none focus:ring-2 ${
-          error
-            ? 'border-red-500 focus:ring-red-400'
-            : 'border-gray-300 focus:ring-blue-500'
-        }`}
+        className={`w-full px-3 py-3 border text-lg rounded-md text-black placeholder-gray-400 focus:outline-none focus:ring-2 ${error ? 'border-red-500 focus:ring-red-400' : 'border-gray-300 focus:ring-blue-500'}`}
       />
       {error && <p className="text-sm text-red-500 mt-1">{error}</p>}
     </div>

@@ -100,7 +100,7 @@ export default function LoginPage() {
             />
             아이디 저장
           </label>
-          <a href="#" className="text-red-300">비밀번호 찾기</a>
+          <a href="find-pwd" className="hover:underline text-red-300">비밀번호 찾기</a>
         </div>
         <button
           type="submit"

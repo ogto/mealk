@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast'
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import DevNote from "@/components/DevNote";
+import KakaoChatButton from "@/components/KakaoChatButton";
 
 export const metadata: Metadata = {
   title: "정채움 | Mealkit",
@@ -23,6 +24,7 @@ export default function RootLayout({
         <Header />
         <main className="w-full min-h-[75vh]">{children}</main>
         <Footer />
+        <KakaoChatButton />
       </body>
     </html>
   );

@@ -1,11 +1,17 @@
 'use client';
 
 import { useState } from 'react';
+import { toast } from 'react-hot-toast'
 
 export default function Footer() {
   const [openInfo, setOpenInfo] = useState(false);
   const [openSupport, setOpenSupport] = useState(false);
   const [openBank, setOpenBank] = useState(false);
+
+  const handleCopy = (text: string) => {
+    navigator.clipboard.writeText(text)
+    toast.success('복사되었습니다.')
+  }
 
   return (
     <footer className="w-full bg-gray-50 text-sm text-gray-700 border-t mt-20 border-gray-300">
@@ -14,14 +20,15 @@ export default function Footer() {
         <div className="max-w-screen-xl mx-auto px-6 flex flex-wrap justify-between gap-6">
           <ul className="space-x-6 flex flex-wrap">
             <li><a href="/about">회사소개</a></li>
-            <li><a href="#">이용약관</a></li>
-            <li><a href="#">쇼핑몰이용안내</a></li>
-            <li><a href="#" className="font-bold">개인정보처리방침</a></li>
+            <li><a href="/terms">이용약관</a></li>
+            <li><a href="/marketing">마케팅 수신 동의</a></li>
+            {/* <li><a href="#">쇼핑몰이용안내</a></li> */}
+            <li><a href="/privacy" className="font-bold">개인정보처리방침</a></li>
           </ul>
           <ul className="space-x-6 flex flex-wrap">
-            <li><a href="#">입점매장 안내</a></li>
+            {/* <li><a href="#">입점매장 안내</a></li> */}
             <li><a href="#" target="_blank">상품제휴</a></li>
-            <li><a href="#">입점신청</a></li>
+            {/* <li><a href="#">입점신청</a></li> */}
           </ul>
         </div>
       </div>
@@ -29,13 +36,12 @@ export default function Footer() {
       {/* Section 2: 모바일 - 아코디언 */}
       <div className="md:hidden border-b py-4 px-6 space-y-4 border-gray-300">
         <AccordionSection title="회사 정보" open={openInfo} onToggle={() => setOpenInfo(!openInfo)}>
-          <p><strong className="text-base text-gray-800">주식회사 정채움</strong></p>
+          <p><strong className="text-base text-gray-800">(주) 정채움</strong></p>
           <p>대표: 정한철</p>
-          <p>사업자등록번호: 123-45-67890</p>
+          <p>사업자등록번호: 314-86-45574</p>
           <p>통신판매업 신고: 제2025-별내-0615호</p>
-          <p>본사: 경기도 부천시 원미로 174</p>
-          <p>물류: 경기도 부천시 원미로 174</p>
-            <p>개인정보관리책임자: 정한철</p>
+          <p>본사: 대전광역시 유성구 월드컵대로51번길 51-4</p>
+          <p>개인정보관리책임자: 정한철</p>
           <p className="mt-2">© 2025 www.mealkit.com All rights reserved.</p>
         </AccordionSection>
 
@@ -60,12 +66,11 @@ export default function Footer() {
       <div className="hidden md:block border-b py-6 border-gray-300">
         <div className="max-w-screen-xl mx-auto px-6 flex justify-between gap-10">
           <address className="not-italic text-sm leading-relaxed text-gray-600">
-            <p><strong className="text-base text-gray-800">주식회사 정채움</strong></p>
+            <p><strong className="text-base text-gray-800">(주) 정채움</strong></p>
             <p>대표: 정한철</p>
-            <p>사업자등록번호: 123-45-67890<a href="#" target="_blank" className="underline text-red-300">[사업자정보확인]</a></p>
-            <p>통신판매업 신고: 제2025-별내-0615호</p>
-            <p>본사: 경기도 부천시 원미로 174</p>
-            <p>물류: 경기도 부천시 원미로 174</p>
+            <p>사업자등록번호: 314-86-45574</p>
+            <p>통신판매업 신고: 제2025-별내-0615호<a href="#" target="_blank" className="underline text-red-300">[사업자정보확인]</a></p>
+            <p>본사: 대전광역시 유성구 월드컵대로51번길 51-4</p>
             <p>개인정보관리책임자: 정한철</p>
             <p className="mt-2">© 2025 www.mealkit.com All rights reserved.</p>
           </address>
@@ -83,8 +88,13 @@ export default function Footer() {
             <div>
               <h3 className="font-bold">무통장 입금안내</h3>
               <ul className="mt-2 space-y-1 text-gray-600">
-                <li>기업: 078-159043-01-010</li>
-                <li>농협: 123-123456-12-123</li>
+                <li
+                  onClick={() => handleCopy('신한 140-013-159130 맛있는생활')}
+                  className="cursor-pointer hover:underline"
+                >
+                  신한: 140-013-159130 | 맛있는생활
+                </li>
+                {/* <li>농협: 123-123456-12-123</li> */}
               </ul>
             </div>
           </div>
@@ -98,10 +108,10 @@ export default function Footer() {
             주식회사 정채움이 운영하는 정채움 홈페이지 내 이미지 및 모든 컨텐츠 등은 저작권법 및 콘텐츠산업진흥법에 의해 보호받고 있습니다.<br />
             무단 도용 시 민·형사상 책임을 물을 수 있습니다.
           </p>
-          <p>
+          {/* <p>
             고객님은 안전거래를 위해 현금 등으로 결제 시 NHN KCP 에스크로 구매안전서비스를 이용하실 수 있습니다.&nbsp;
             <a href="#" target="_blank" className="text-red-300 underline">서비스가입사실확인</a>
-          </p>
+          </p> */}
         </div>
       </div>
     </footer>
