@@ -31,7 +31,12 @@ const newsList = [
   },
 ];
 
-export default function NewsDetailPage({ params }: { params: { id: string } }) {
+interface PageProps {
+  params: { id: string }
+}
+
+export default function NewsDetailPage({ params }: PageProps) {
+
   const newsId = parseInt(params.id);
   const news = newsList.find((item) => item.id === newsId);
 

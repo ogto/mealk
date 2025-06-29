@@ -67,7 +67,7 @@ export default function Header() {
         ) : (
           <>
             <Link href="/login" className="hover:text-red-300">로그인</Link>
-            <Link href="/new" className="hover:text-red-300">새소식</Link>
+            <Link href="/news" className="hover:text-red-300">새소식</Link>
           </>
         )}
       </div>
@@ -142,7 +142,7 @@ export default function Header() {
         로그아웃
       </button>
 
-      <Link href="/new" onClick={() => setMenuOpen(false)} className="block text-lg font-bold hover:underline">
+      <Link href="/news" onClick={() => setMenuOpen(false)} className="block text-lg font-bold hover:underline">
         새소식
       </Link>
     </>
@@ -151,7 +151,7 @@ export default function Header() {
       <Link href="/login" onClick={() => setMenuOpen(false)} className="block text-lg font-bold hover:underline mb-3">
         로그인
       </Link>
-      <Link href="/new" onClick={() => setMenuOpen(false)} className="block text-lg font-bold hover:underline">
+      <Link href="/news" onClick={() => setMenuOpen(false)} className="block text-lg font-bold hover:underline">
         새소식
       </Link>
     </>
@@ -185,7 +185,7 @@ function UserDropdown({ user, onLogout }: { user: any, onLogout: () => void }) {
           <HeadlessMenu.Item as="button" onClick={onLogout} className="w-full text-left block px-4 py-2 text-sm hover:bg-gray-100">
             로그아웃
           </HeadlessMenu.Item>
-          <HeadlessMenu.Item as="a" href="/new" className="block px-4 py-2 text-sm hover:bg-gray-100">
+          <HeadlessMenu.Item as="a" href="/news" className="block px-4 py-2 text-sm hover:bg-gray-100">
             새소식
           </HeadlessMenu.Item>
         </div>

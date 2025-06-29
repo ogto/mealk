@@ -40,7 +40,7 @@ export default function NewPostList() {
             key={news.id}
             whileHover={{ scale: 1.03, boxShadow: "0px 10px 20px rgba(0,0,0,0.1)" }}
             className="rounded-xl border bg-white shadow-md overflow-hidden cursor-pointer transition-transform"
-            onClick={() => router.push(`/new/${news.id}`)}
+            onClick={() => router.push(`/news/${news.id}`)}
           >
             <div className="w-full aspect-[4/3] relative">
               <Image
