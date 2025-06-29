@@ -35,8 +35,13 @@ interface PageProps {
   params: { id: string }
 }
 
-export default async function NewsDetailPage({ params }: PageProps) {
+export async function generateStaticParams() {
+  return newsList.map((news) => ({
+    id: news.id.toString(),
+  }))
+}
 
+export default async function NewsDetailPage({ params }: PageProps) {
   const newsId = parseInt(params.id);
   const news = newsList.find((item) => item.id === newsId);
 
