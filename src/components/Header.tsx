@@ -18,7 +18,7 @@ const navItems = [
   { label: '브랜드스토리', href: '/brandStory' },
   { label: '고객센터', href: '/help' },
   { label: '제휴', href: '/partnership' },
-  { label: '밀키트', href: '#' },
+  { label: '밀키트', href: '/mealkit' },
 ]
 
 export default function Header() {

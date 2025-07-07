@@ -12,11 +12,7 @@ export default function HomePage() {
       <MainBanner />
       <StorySection />
       <SubBanner />
-      <section className="max-w-screen-xl mx-auto px-4 py-12 w-full">
-        <h2 className="text-2xl font-bold mb-4 text-gray-700">카테고리</h2>
-        <p className="text-gray-500">정채움에서 직접 만드는 상품 카테고리에요.</p>
-        <CategoryIcons />
-      </section>
+      <CategoryIcons />
       <section className="w-full bg-gray-50 py-20">
         <AboutSection />
       </section>

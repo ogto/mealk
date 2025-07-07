@@ -19,7 +19,7 @@ export default function DevNote() {
       {/* 팝업 목록 패널 */}
       {isOpen && (
         <div
-          className="fixed top-40 left-4 z-[100] w-[320px] bg-white border border-gray-300 rounded-lg shadow-lg p-4 text-sm font-sans"
+          className="fixed top-40 left-4 z-[100] w-[320px] max-h-[600px] bg-white border border-gray-300 rounded-lg shadow-lg p-4 text-sm font-sans overflow-y-auto"
         >
           <div className="flex justify-between items-center mb-2">
             <h2 className="text-lg font-bold text-green-700">✅ 개발 완료 페이지</h2>
@@ -82,6 +82,9 @@ export default function DevNote() {
             </li>
             <li>
               개인정보처리방침
+            </li>
+            <li>
+              밀키트
             </li>
           </ul>
         </div>
