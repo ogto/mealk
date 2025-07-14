@@ -18,9 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className="w-full">
+      <head>
+        <link rel="icon" href="/logo/favicon.ico" type="image/x-icon" />
+      </head>
       <body className="w-full overflow-x-hidden bg-white text-black font-sans">
         <Toaster position="top-center" reverseOrder={false} />
-        <DevNote />
+        {/* <DevNote /> */}
         <Header />
         <main className="w-full min-h-[75vh]">{children}</main>
         <Footer />

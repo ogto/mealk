@@ -69,7 +69,7 @@ export default function Footer() {
             <p><strong className="text-base text-gray-800">(주) 정채움</strong></p>
             <p>대표: 정한철</p>
             <p>사업자등록번호: 314-86-45574</p>
-            <p>통신판매업 신고: 제2025-별내-0615호<a href="#" target="_blank" className="underline text-red-300">[사업자정보확인]</a></p>
+            {/* <p>통신판매업 신고: 제2025-별내-0615호<a href="#" target="_blank" className="underline text-red-300">[사업자정보확인]</a></p> */}
             <p>본사: 대전광역시 유성구 월드컵대로51번길 51-4</p>
             <p>개인정보관리책임자: 정한철</p>
             <p className="mt-2">© 2025 www.mealkit.com All rights reserved.</p>
