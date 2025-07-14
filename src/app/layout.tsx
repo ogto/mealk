@@ -24,7 +24,7 @@ export default function RootLayout({
         {/* 공유 최적화용 수동 태그들 */}
         <meta property="og:title" content="정채움 | Mealkit" />
         <meta property="og:description" content="간편하고 건강한 정채움, 지금 만나보세요." />
-        <meta property="og:image" content="https://www.jungchaeum.com/logo/logo2.png" />
+        <meta property="og:image" content="https://www.jungchaeum.com/logo/seo/og.jpg" />
         <meta property="og:url" content="https://www.jungchaeum.com" />
         <meta property="og:type" content="website" />
 
