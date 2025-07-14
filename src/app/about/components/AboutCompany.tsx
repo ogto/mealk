@@ -1,5 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { useRouter } from "next/navigation";
 
 export default function AboutCompany() {
@@ -130,6 +131,123 @@ export default function AboutCompany() {
             <li><span className="text-green-500 font-semibold">2018</span> - 누적 판매 100만 개 돌파</li>
             <li><span className="text-green-500 font-semibold">2020</span> - 건강 도시락, 유아식 출시</li>
           </motion.ul>
+        </div>
+      </section>
+
+      {/* 제조 특징 섹션 */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-3xl font-semibold text-center mb-10"
+          >
+            정채움 공장 특징
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-10 items-start">
+            <div className="flex flex-col gap-6">
+              <Image
+                src="/images/company/office.png"
+                alt="공장 사진"
+                width={1200}
+                height={600}
+                className="rounded-lg shadow"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 제조 시설 섹션 */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-3xl font-semibold text-center mb-10"
+          >
+            정채움 제조시설
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+            {/* 왼쪽: 공정/실내 시설 사진 2개 */}
+            <div className="flex flex-col gap-6">
+              <Image
+                src="/images/company/manufact-1.png"
+                alt="제조 시설 내부 1"
+                width={600}
+                height={400}
+                className="rounded-lg shadow"
+              />
+              <Image
+                src="/images/company/manufact-2.png"
+                alt="제조 시설 내부 2"
+                width={600}
+                height={400}
+                className="rounded-lg shadow"
+              />
+            </div>
+
+            {/* 오른쪽: 4개 시스템 */}
+            <div className="grid grid-cols-2 gap-6">
+              {/* 위생전실 */}
+              <div className="text-sm md:text-base">
+                <Image
+                  src="/images/company/manufact-3.png"
+                  alt="위생전실"
+                  width={300}
+                  height={200}
+                  className="rounded-lg mb-2 shadow"
+                />
+                <h3 className="font-bold text-green-700 mb-1">1. 위생전실</h3>
+                <p>해썹(HACCP) 위생전실 입구입니다.</p>
+              </div>
+
+              {/* 탈의실 */}
+              <div className="text-sm md:text-base">
+                <Image
+                  src="/images/company/manufact-4.png"
+                  alt="탈의실"
+                  width={300}
+                  height={200}
+                  className="rounded-lg mb-2 shadow"
+                />
+                <h3 className="font-bold text-green-700 mb-1">2. 탈의실</h3>
+                <p>작업 전 위생복을 갈아입는 공간입니다.</p>
+              </div>
+
+              {/* 손세척 */}
+              <div className="text-sm md:text-base">
+                <Image
+                  src="/images/company/manufact-5.png"
+                  alt="손세척 시스템"
+                  width={300}
+                  height={200}
+                  className="rounded-lg mb-2 shadow"
+                />
+                <h3 className="font-bold text-green-700 mb-1">3. 손세척 시스템</h3>
+                <p>작업자의 편의를 고려한 자동 발판형 손세척 시스템입니다.</p>
+              </div>
+
+              {/* 방역 */}
+              <div className="text-sm md:text-base">
+                <Image
+                  src="/images/company/manufact-6.png"
+                  alt="방역 장치"
+                  width={300}
+                  height={200}
+                  className="rounded-lg mb-2 shadow"
+                />
+                <h3 className="font-bold text-green-700 mb-1">4. 방역관리</h3>
+                <p>외부 벌레의 침입을 차단하는 출입구 방역 시스템입니다.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
