@@ -20,6 +20,18 @@ export default function RootLayout({
     <html lang="ko" className="w-full">
       <head>
         <link rel="icon" href="/logo/favicon.ico" type="image/x-icon" />
+
+        {/* 공유 최적화용 수동 태그들 */}
+        <meta property="og:title" content="정채움 | Mealkit" />
+        <meta property="og:description" content="간편하고 건강한 정채움, 지금 만나보세요." />
+        <meta property="og:image" content="https://www.jungchaeum.com/logo/logo2.png" />
+        <meta property="og:url" content="https://www.jungchaeum.com" />
+        <meta property="og:type" content="website" />
+
+        {/* <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="정채움 | Mealkit" />
+        <meta name="twitter:description" content="간편하고 건강한 정채움, 지금 만나보세요." />
+        <meta name="twitter:image" content="https://www.jungchaeum.com/og-image.jpg" /> */}
       </head>
       <body className="w-full overflow-x-hidden bg-white text-black font-sans">
         <Toaster position="top-center" reverseOrder={false} />
