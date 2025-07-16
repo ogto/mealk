@@ -5,4 +5,5 @@ export interface GalleryItem {
   description: string;
   tags: string[];
   year: number;
+  images: string[];
 }
