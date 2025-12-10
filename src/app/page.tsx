@@ -33,9 +33,6 @@ export default function HomePage() {
       {/* Process */}
       <section id="process" className="py-24 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-zinc-950 to-black">
         <div className="max-w-6xl mx-auto">
-          <p className="text-sm tracking-[0.25em] text-emerald-300 mb-4">
-            PROCESS
-          </p>
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
             서비스/제품이 완성되는 과정
           </h2>
@@ -82,9 +79,6 @@ export default function HomePage() {
       {/* Experience / Features */}
       <section id="experience" className="py-24 px-6 md:px-12 lg:px-20 bg-black">
         <div className="max-w-6xl mx-auto">
-          <p className="text-sm tracking-[0.25em] text-emerald-300 mb-4">
-            EXPERIENCE
-          </p>
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
             사용 경험 & 핵심 특징
           </h2>
@@ -126,9 +120,6 @@ export default function HomePage() {
       {/* Stats */}
       <section id="stats" className="py-20 px-6 md:px-12 lg:px-20 bg-zinc-950">
         <div className="max-w-6xl mx-auto">
-          <p className="text-sm tracking-[0.25em] text-emerald-300 mb-4">
-            NUMBERS
-          </p>
           <h2 className="text-3xl md:text-4xl font-semibold mb-8">
             숫자로 보여주는 신뢰도
           </h2>
@@ -158,9 +149,6 @@ export default function HomePage() {
       {/* Product / Menu */}
       <section id="menu" className="py-24 px-6 md:px-12 lg:px-20 bg-black">
         <div className="max-w-6xl mx-auto">
-          <p className="text-sm tracking-[0.25em] text-emerald-300 mb-4">
-            MENU / PRODUCT
-          </p>
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
             제공 서비스 / 상품
           </h2>
@@ -190,9 +178,6 @@ export default function HomePage() {
       {/* Media / Mention */}
       <section id="media" className="py-24 px-6 md:px-12 lg:px-20 bg-zinc-950">
         <div className="max-w-6xl mx-auto">
-          <p className="text-sm tracking-[0.25em] text-emerald-300 mb-4">
-            MEDIA
-          </p>
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
             언론 & 미디어 노출
           </h2>
