@@ -35,7 +35,7 @@ export default function HeroSection() {
                 className="object-cover"
               />
               {/* 어두운 오버레이 */}
-              <div className="absolute inset-0 bg-black/45" />
+              <div className="absolute inset-0 bg-black/30" />
             </div>
           </SwiperSlide>
         ))}
@@ -43,15 +43,11 @@ export default function HeroSection() {
 
       {/* 고정 텍스트 레이어 — BrandVisual 스타일 */}
       <div className="absolute inset-0 z-10">
-        <div className="h-full max-w-6xl mx-auto px-6 flex items-center">
+        <div className="h-full max-w-7xl mx-auto px-10 flex items-center">
           <div className="max-w-xl text-white">
-            {/* (있어도 되고 없어도 되는 라벨 자리) */}
-            {/* <p className="text-xs tracking-[0.35em] text-white/70 mb-4">
-              PREMIUM FOOD CRAFT
-            </p> */}
 
             {/* 메인 헤드라인 */}
-            <h1 className="text-3xl md:text-5xl font-semibold leading-tight mb-6">
+            <h1 className="text-xl md:text-5xl font-semibold leading-tight mb-6">
               <span className="block">20년 숙련기술로 완성되는</span>
               <span className="block">정채움 프리미엄 시그니처</span>
             </h1>
