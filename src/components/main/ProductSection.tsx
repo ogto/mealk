@@ -9,14 +9,14 @@ export default function ProductSection() {
       name: "궁중 양념갈비(LA)",
       desc: "4kg 슬리브(신난왕구이 4kg과 동일 사이즈)",
       spec: "4인분 / 4kg / 냉동",
-      image: "/images/n_p/ggl.jpeg",
+      image: "/images/n_p/gg.jpeg",
     },
     {
       badge: "SIGNATURE",
       name: "양념 팽이버섯 소불고기",
       desc: "정채움의 시그니처 제품입니다.",
       spec: "시즈닝 포함 / 조리 10분",
-      image: "/images/n_p/psb.png",
+      image: "/images/n_p/ps.jpeg",
     },
     {
       badge: "NEW",

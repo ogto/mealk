@@ -47,18 +47,6 @@ export default function MediaSection() {
           </p>
         </div>
 
-        {/* 🔵 배너 이미지 영역 */}
-        <div className="relative w-full overflow-hidden rounded-3xl border border-white/10 shadow-lg">
-          <Image
-            src="/images/n_m/1.jpg"   // 여기에 실제 파일명 넣으면 됨
-            alt="정채움 사회공헌 활동 이미지"
-            width={1600}
-            height={900}
-            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-        </div>
-
         {/* 기사 카드 */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((item, idx) => (

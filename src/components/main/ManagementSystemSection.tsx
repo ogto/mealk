@@ -76,7 +76,7 @@ export default function ManagementSystemSection() {
                 key={cert.code}
                 className={`group relative overflow-hidden rounded-3xl border border-white/12 bg-white/[0.02] p-4 flex flex-col gap-4 shadow-[0_0_40px_rgba(0,0,0,0.7)] backdrop-blur-sm transition-transform transition-shadow
                 hover:-translate-y-1 hover:shadow-[0_0_60px_rgba(56,189,248,0.45)]
-                ${index === 1 ? "md:translate-y-4" : ""}`}
+                `}
               >
                 {/* 상단 텍스트 */}
                 <div className="space-y-1 z-10">

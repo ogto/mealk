@@ -99,10 +99,6 @@ export default function CertificateSection() {
                 </div>
               </div>
             </div>
-
-            <p className="mt-12 text-xs text-zinc-400 text-center">
-              우수 숙련기술자 &amp; 숙련기술장려 모범사업체 인증 상장 스캔본
-            </p>
           </div>
         </div>
       </div>
