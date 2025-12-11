@@ -14,7 +14,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="w-full bg-gray-50 text-sm text-gray-700 border-t mt-20 border-gray-300">
+    <footer className="w-full bg-gray-50 text-sm text-gray-700 border-t mt-20 border-gray-300" id="footer">
       {/* Section 1: 메뉴 */}
       <div className="border-b py-4 border-gray-300">
         <div className="max-w-screen-xl mx-auto px-6 flex flex-wrap justify-between gap-6">

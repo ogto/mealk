@@ -22,7 +22,7 @@ export default function HeroSection() {
           disableOnInteraction: false,
         }}
         loop
-        className="h-full w-full" // ❗ absolute 제거
+        className="h-full w-full"
       >
         {heroImages.map((src, idx) => (
           <SwiperSlide key={idx}>
@@ -41,22 +41,28 @@ export default function HeroSection() {
         ))}
       </Swiper>
 
-      {/* 고정 텍스트 레이어 */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center">
-        <div className="max-w-3xl text-center px-6 text-white">
-          {/* 메인 헤드라인 */}
-          <h1 className="text-2xl md:text-6xl font-semibold leading-tight mb-6">
-            <span className="block">20년 숙련기술로 완성되는</span>
-            <span className="block">정채움 프리미엄 시그니처</span>
-          </h1>
+      {/* 고정 텍스트 레이어 — BrandVisual 스타일 */}
+      <div className="absolute inset-0 z-10">
+        <div className="h-full max-w-6xl mx-auto px-6 flex items-center">
+          <div className="max-w-xl text-white">
+            {/* (있어도 되고 없어도 되는 라벨 자리) */}
+            {/* <p className="text-xs tracking-[0.35em] text-white/70 mb-4">
+              PREMIUM FOOD CRAFT
+            </p> */}
 
-          {/* 서브 카피 */}
-          <p className="text-white/80 mb-8 text-base md:text-lg leading-relaxed">
-            제대로 된 재료, 시간, 정성만을 고집하며
-            <br className="hidden md:block" />
-            한 끼의 가치가 더 특별해지는 경험을 만들어갑니다.
-          </p>
+            {/* 메인 헤드라인 */}
+            <h1 className="text-3xl md:text-5xl font-semibold leading-tight mb-6">
+              <span className="block">20년 숙련기술로 완성되는</span>
+              <span className="block">정채움 프리미엄 시그니처</span>
+            </h1>
 
+            {/* 서브 카피 */}
+            <p className="text-sm md:text-base text-white/80 leading-relaxed">
+              제대로 된 재료, 시간, 정성만을 고집하며
+              <br className="hidden md:block" />
+              한 끼의 가치가 더 특별해지는 경험을 만들어갑니다.
+            </p>
+          </div>
         </div>
       </div>
 

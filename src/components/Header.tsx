@@ -12,6 +12,7 @@ export default function Header() {
     { href: '#certificates', label: '기술인증' },
     { href: '#management-system', label: '경영시스템' },
     { href: '#media', label: '언론보도' },
+    { href: '#footer', label: '고객센터' },   // ✅ 추가
   ]
 
   const closeMenu = () => setOpen(false)
@@ -62,7 +63,6 @@ export default function Header() {
             className="md:hidden flex items-center justify-center w-9 h-9"
             aria-label="메뉴 열기"
           >
-            {/* 새로운 미니멀 버거 아이콘 */}
             <div className="space-y-[6px]">
               <span className="block w-6 h-[2px] bg-zinc-900 rounded-full"></span>
               <span className="block w-6 h-[2px] bg-zinc-900 rounded-full"></span>
@@ -84,7 +84,7 @@ export default function Header() {
         onClick={closeMenu}
       />
 
-      {/* 슬라이드 메뉴 (로고 없음 / 유리 느낌 / 컬러 변경) */}
+      {/* 슬라이드 메뉴 */}
       <aside
         className={`
           fixed inset-y-0 right-0 z-50 md:hidden
@@ -99,15 +99,13 @@ export default function Header() {
           ${open ? 'translate-x-0' : 'translate-x-full'}
         `}
       >
-        
-        {/* 상단 닫기 버튼 */}
+        {/* 닫기 버튼 */}
         <div className="flex items-center justify-end px-6 h-[64px] border-b border-white/10">
           <button
             onClick={closeMenu}
             aria-label="메뉴 닫기"
             className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition"
           >
-            {/* X 아이콘 정확히 가운데 정렬 */}
             <div className="flex items-center justify-center w-5 h-5">
               <span className="absolute w-5 h-[2px] bg-white rotate-45 rounded"></span>
               <span className="absolute w-5 h-[2px] bg-white -rotate-45 rounded"></span>
