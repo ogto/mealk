@@ -43,11 +43,11 @@ export default function HeroSection() {
 
       {/* 고정 텍스트 레이어 — BrandVisual 스타일 */}
       <div className="absolute inset-0 z-10">
-        <div className="h-full max-w-7xl mx-auto px-10 flex items-center">
+        <div className="h-full max-w-7xl mx-auto px-10 flex items-center pt-30 md:pt-32">
           <div className="max-w-xl text-white">
 
             {/* 메인 헤드라인 */}
-            <h1 className="text-xl md:text-5xl font-semibold leading-tight mb-6">
+            <h1 className="text-3xl md:text-5xl font-semibold leading-tight mb-6">
               <span className="block">20년 숙련기술로 완성되는</span>
               <span className="block">정채움 프리미엄 시그니처</span>
             </h1>
