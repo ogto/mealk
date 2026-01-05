@@ -3,7 +3,7 @@
 export default function KakaoChatButton() {
   return (
     <a
-      href="https://pf.kakao.com/_xoKxcPxj/chat"
+      href="https://pf.kakao.com/_xovdgn/chat"
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-8 right-8 z-50"

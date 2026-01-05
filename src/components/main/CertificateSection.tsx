@@ -314,12 +314,12 @@ export default function CertificateSection() {
             </div>
           </div>
 
-          {/* ✅ 스와이프 영역 */}
+          {/* 스와이프 영역 */}
           <div className="mt-16">
             <div className="mb-4 flex items-end justify-between gap-4">
               <h3 className="text-xl font-semibold text-white md:text-2xl">수상경력 및 특허</h3>
 
-              {/* ✅ selector 네비게이션 (ref/useEffect 없음) */}
+              {/* selector 네비게이션 (ref/useEffect 없음) */}
               <div className="flex items-center gap-2">
                 <button
                   type="button"

@@ -14,13 +14,14 @@ export default function ProductSection() {
       badge: "SIGNATURE",
       name: "팽이버섯 비법 신난왕구이",
       desc: "남녀노소 즐기는 달콤 짭짤한 갈비맛",
-      image: "/images/n_p/ps.jpeg",
+      image: "/images/n_p/ps.png",
+      href: "https://smartstore.naver.com/jungchaeum/products/12914578911",
     },
     {
       badge: "NEW",
       name: "매콤 소스 신난 왕구이",
       desc: "두툼한 고기에 매콤함을 더한 별미",
-      image: "/images/n_p/sw.jpg",
+      image: "/images/n_p/sw.png",
     },
   ];
 
@@ -55,7 +56,7 @@ export default function ProductSection() {
 
             {/* 🔵 PC / 태블릿 : 카카오톡 문의 */}
             <a
-              href="https://pf.kakao.com/_xoKxcPxj/chat"
+              href="https://pf.kakao.com/_xovdgn/chat"
               target="_blank"
               className="hidden md:inline-flex items-center justify-center rounded-full border border-sky-400/50 bg-sky-500/10 px-5 py-2.5 text-sm font-medium text-sky-300 backdrop-blur transition hover:bg-sky-500/20 hover:border-sky-300"
             >
@@ -84,19 +85,17 @@ export default function ProductSection() {
         {/* ------------------------------- */}
         {/* 🚀 영상 배너 */}
         {/* ------------------------------- */}
-<div className="relative w-full overflow-hidden rounded-3xl border border-white/10 shadow-lg bg-black">
-  <video
-    src="/videos/gal2.mp4"
-    autoPlay
-    loop
-    muted
-    playsInline
-    className="w-full h-auto aspect-video object-cover opacity-90"
-  />
-  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-black/10 to-transparent pointer-events-none" />
-</div>
-
-
+        <div className="relative w-full overflow-hidden rounded-3xl border border-white/10 shadow-lg bg-black">
+          <video
+            src="/videos/gal2.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-auto aspect-video object-cover opacity-90"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-black/10 to-transparent pointer-events-none" />
+        </div>
         {/* ------------------------------- */}
         {/* PRODUCT CARDS */}
         {/* ------------------------------- */}
@@ -145,13 +144,31 @@ export default function ProductSection() {
                 {/* <p className="text-xs text-zinc-400">{item.spec}</p> */}
               </div>
 
-              {/* FOOTER */}
               <div className="z-10 mt-auto pt-2 flex items-center justify-between text-[0.7rem] text-zinc-400">
                 <span>카카오톡 또는 전화로 문의</span>
-                <span className="hidden md:inline text-sky-300 group-hover:translate-x-0.5 transition-transform cursor-pointer">
-                  제품 상세보기 →
-                </span>
+
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                      hidden md:inline
+                      text-sky-300
+                      transition-transform
+                      group-hover:translate-x-0.5
+                      hover:underline
+                    "
+                  >
+                    제품 상세보기 →
+                  </a>
+                ) : (
+                  <span className="hidden md:inline text-zinc-500 cursor-default">
+                    제품 상세보기 →
+                  </span>
+                )}
               </div>
+
             </article>
           ))}
         </div>

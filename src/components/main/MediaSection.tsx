@@ -79,6 +79,25 @@ export default function MediaSection() {
           ))}
         </div>
 
+        {/* ------------------------------- */}
+        {/* 🎥 미디어 하이라이트 (YouTube) */}
+        {/* ------------------------------- */}
+        <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-black shadow-lg">
+          <div className="relative aspect-video w-full">
+            <iframe
+              src="https://www.youtube.com/embed/dl_E8AmLBUA"
+              title="정채움 미디어 영상"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full"
+            />
+          </div>
+
+          {/* 톤 정리용 오버레이 */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-black/10 to-transparent" />
+        </div>
+
         {/* 한 줄 마무리 */}
         <p className="text-xs text-zinc-500 text-center mt-10">
           정채움은 제품을 넘어, 지역사회와 함께 성장하는 기업을 지향합니다.

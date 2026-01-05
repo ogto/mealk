@@ -1,6 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
 
 export default function ManagementSystemSection() {
   const certs = [
@@ -50,11 +55,8 @@ export default function ManagementSystemSection() {
 
           <p className="text-sm md:text-base text-zinc-300 max-w-2xl mx-auto leading-relaxed">
             정채움은 생산 현장만 관리하는 것이 아니라,
-            <span className="text-sky-300 font-medium">
-              {" "}안전보건 · 품질 · 환경
-            </span>
-            을 아우르는 통합 경영시스템을 구축하고
-            국제 표준 인증을 취득했습니다.
+            <span className="text-sky-300 font-medium">{" "}안전보건 · 품질 · 환경</span>
+            을 아우르는 통합 경영시스템을 구축하고 국제 표준 인증을 취득했습니다.
           </p>
 
           {/* ISO 뱃지 라인 */}
@@ -68,51 +70,89 @@ export default function ManagementSystemSection() {
             <span className="rounded-full border border-sky-400/40 bg-sky-500/10 px-3 py-1 text-sky-300">
               ISO 14001 · 환경경영
             </span>
+            <span className="rounded-full border border-sky-400/40 bg-sky-500/10 px-3 py-1 text-sky-300">
+              ISO 50001 · 에너지경영
+            </span>
           </div>
         </div>
 
-        {/* 인증서 카드들 */}
+        {/* 인증서 슬라이드 */}
         <div className="relative">
           {/* 뒤 배경 글로우 */}
           <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,_rgba(56,189,248,0.2),_transparent_60%)] opacity-60" />
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {certs.map((cert, index) => (
-              <article
-                key={cert.code}
-                className={`group relative overflow-hidden rounded-3xl border border-white/12 bg-white/[0.02] p-4 flex flex-col gap-4 shadow-[0_0_40px_rgba(0,0,0,0.7)] backdrop-blur-sm transition-transform transition-shadow
-                hover:-translate-y-1 hover:shadow-[0_0_60px_rgba(56,189,248,0.45)]
-                `}
-              >
-                {/* 상단 텍스트 */}
-                <div className="space-y-1 z-10">
-                  <p className="text-[0.7rem] uppercase tracking-[0.2em] text-zinc-400">
-                    {cert.code}
-                  </p>
-                  <h3 className="text-sm md:text-base font-semibold text-zinc-50">
-                    {cert.label}
-                  </h3>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
-                    {cert.desc}
-                  </p>
-                </div>
+          {/* 좌/우 버튼 (양쪽) */}
+          <button
+            type="button"
+            aria-label="이전"
+            className="msPrev absolute -left-3 md:-left-5 top-1/2 -translate-y-1/2 z-20 grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-white/5 text-white/80 hover:bg-white/10 active:scale-[0.98]"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            aria-label="다음"
+            className="msNext absolute -right-3 md:-right-5 top-1/2 -translate-y-1/2 z-20 grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-white/5 text-white/80 hover:bg-white/10 active:scale-[0.98]"
+          >
+            ›
+          </button>
 
-                {/* 인증서 이미지 */}
-                <div className="relative mt-2 overflow-hidden rounded-2xl border border-white/15 bg-zinc-950 aspect-[3/4]">
-                  <Image
-                    src={cert.image}
-                    alt={`${cert.code} ${cert.label} 인증서`}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
+          {/* 슬라이더 카드 컨테이너 */}
+          <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-4 md:p-5 backdrop-blur">
+            <Swiper
+              modules={[Navigation]}
+              navigation={{
+                prevEl: ".msPrev",
+                nextEl: ".msNext",
+              }}
+              spaceBetween={16}
+              slidesPerView={1.05}
+              breakpoints={{
+                640: { slidesPerView: 1.6, spaceBetween: 18 },
+                768: { slidesPerView: 2.2, spaceBetween: 18 },
+                1024: { slidesPerView: 3.05, spaceBetween: 20 },
+                1280: { slidesPerView: 3.3, spaceBetween: 22 },
+              }}
+              className="select-none"
+            >
+              {certs.map((cert) => (
+                <SwiperSlide key={cert.code}>
+                  <article
+                    className="group relative h-full overflow-hidden rounded-3xl border border-white/12 bg-white/[0.02] p-4 flex flex-col gap-4
+                    shadow-[0_0_40px_rgba(0,0,0,0.7)] backdrop-blur-sm transition
+                    hover:-translate-y-1 hover:shadow-[0_0_60px_rgba(56,189,248,0.45)]"
+                  >
+                    {/* 상단 텍스트 */}
+                    <div className="space-y-1">
+                      <p className="text-[0.7rem] uppercase tracking-[0.2em] text-zinc-400">
+                        {cert.code}
+                      </p>
+                      <h3 className="text-sm md:text-base font-semibold text-zinc-50">
+                        {cert.label}
+                      </h3>
+                      <p className="text-xs text-zinc-400 leading-relaxed">
+                        {cert.desc}
+                      </p>
+                    </div>
 
-                {/* 하단 라벨 */}
-                <div className="pt-1 text-[0.7rem] text-zinc-500">
-                  국제 인증기관 ICR 발행 · 가공육류 제품 제조 분야
-                </div>
-              </article>
-            ))}
+                    {/* 인증서 이미지 */}
+                    <div className="relative mt-2 overflow-hidden rounded-2xl border border-white/15 bg-zinc-950 aspect-[3/4]">
+                      <Image
+                        src={cert.image}
+                        alt={`${cert.code} ${cert.label} 인증서`}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+
+                    {/* 하단 라벨 */}
+                    <div className="pt-1 text-[0.7rem] text-zinc-500">
+                      국제 인증기관 ICR 발행 · 가공육류 제품 제조 분야
+                    </div>
+                  </article>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
 
