@@ -8,19 +8,25 @@ export default function ManagementSystemSection() {
       code: "ISO 45001",
       label: "안전보건경영시스템",
       desc: "현장 안전과 보건 관리를 국제 기준에 맞춰 운영합니다.",
-      image: "/images/n_ms/1.png", // 1페이지 이미지
+      image: "/images/n_ms/1.png",
     },
     {
       code: "ISO 9001",
       label: "품질경영시스템",
       desc: "제품·서비스 전 과정의 품질을 체계적으로 관리합니다.",
-      image: "/images/n_ms/2.png", // 2페이지 이미지
+      image: "/images/n_ms/2.png",
     },
     {
       code: "ISO 14001",
       label: "환경경영시스템",
-      desc: "환경 영향을 줄이기 위한 프로세스를 지속적으로 개선합니다.",
-      image: "/images/n_ms/3.png", // 3페이지 이미지
+      desc: "환경 영향을 최소화하기 위한 관리 체계를 구축하고 지속적으로 개선합니다.",
+      image: "/images/n_ms/3.png",
+    },
+    {
+      code: "ISO 50001",
+      label: "에너지경영시스템",
+      desc: "에너지 사용량을 체계적으로 관리하고 효율을 개선하여 비용 절감과 지속 가능한 운영을 실현합니다.",
+      image: "/images/n_ms/4.png",
     },
   ];
 

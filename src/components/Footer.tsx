@@ -27,7 +27,7 @@ export default function Footer() {
           </ul>
           <ul className="space-x-6 flex flex-wrap">
             {/* <li><a href="#">입점매장 안내</a></li> */}
-            <li><a href="#" target="_blank">상품제휴</a></li>
+            {/* <li><a href="#" target="_blank">상품제휴</a></li> */}
             {/* <li><a href="#">입점신청</a></li> */}
           </ul>
         </div>
@@ -51,15 +51,15 @@ export default function Footer() {
           <a href="#" className="inline-block mt-2 px-4 py-2 border border-red-300 text-red-300 rounded hover:bg-red-300 hover:text-white transition">
             1:1 문의하기
           </a>
-          <p className="mt-2 text-gray-500 text-sm">평일 10:00 ~ 17:00 (점심시간 12:00 ~ 13:00)<br />주말 · 공휴일 휴무</p>
+          <p className="mt-2 text-gray-500 text-sm">평일 09:00 ~ 17:00 (점심시간 12:00 ~ 13:00)<br />주말 · 공휴일 휴무</p>
         </AccordionSection>
 
-        <AccordionSection title="무통장 입금안내" open={openBank} onToggle={() => setOpenBank(!openBank)}>
+        {/* <AccordionSection title="무통장 입금안내" open={openBank} onToggle={() => setOpenBank(!openBank)}>
           <ul className="mt-2 space-y-1 text-gray-600 text-sm">
             <li>기업: 078-159043-01-010</li>
             <li>농협: 123-123456-12-123</li>
           </ul>
-        </AccordionSection>
+        </AccordionSection> */}
       </div>
 
       {/* Section 2: 데스크탑 - 펼침 */}
@@ -85,7 +85,7 @@ export default function Footer() {
               </a>
               <p className="mt-2 text-gray-500">평일 10:00 ~ 17:00 (점심시간 12:00 ~ 13:00)<br />주말 · 공휴일 휴무</p>
             </div>
-            <div>
+            {/* <div>
               <h3 className="font-bold">무통장 입금안내</h3>
               <ul className="mt-2 space-y-1 text-gray-600">
                 <li
@@ -94,9 +94,8 @@ export default function Footer() {
                 >
                   신한: 140-013-159130 | 맛있는생활
                 </li>
-                {/* <li>농협: 123-123456-12-123</li> */}
               </ul>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
