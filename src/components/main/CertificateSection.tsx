@@ -3,12 +3,6 @@
 import Image from "next/image";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-
-import "swiper/css";
-import "swiper/css/navigation";
-
 type LightboxItem = { src: string; alt: string };
 
 function clamp(n: number, min: number, max: number) {
@@ -30,14 +24,14 @@ function LightboxModal({
   onPrev: () => void;
   onNext: () => void;
 }) {
-  const item = items[index];
+  const item = items?.[index];
+
   const [scale, setScale] = useState(1);
   const [pos, setPos] = useState({ x: 0, y: 0 });
 
   const draggingRef = useRef(false);
   const lastRef = useRef({ x: 0, y: 0 });
 
-  // 열릴 때 초기화 + 스크롤 락 + 단축키
   useEffect(() => {
     if (!open) return;
 
@@ -67,14 +61,13 @@ function LightboxModal({
     };
   }, [open, onClose, onPrev, onNext]);
 
-  // 이미지 변경 시 리셋
   useEffect(() => {
     if (!open) return;
     setScale(1);
     setPos({ x: 0, y: 0 });
   }, [index, open]);
 
-  if (!open || !item) return null;
+  if (!open || !item?.src) return null;
 
   const zoomIn = () => setScale((s) => clamp(s + 0.25, 1, 4));
   const zoomOut = () => setScale((s) => clamp(s - 0.25, 1, 4));
@@ -89,11 +82,10 @@ function LightboxModal({
     setScale((s) => clamp(s + (delta > 0 ? -0.15 : 0.15), 1, 4));
   };
 
-  // 드래그 이동(팬)
   const onPointerDown: React.PointerEventHandler<HTMLDivElement> = (e) => {
     draggingRef.current = true;
     lastRef.current = { x: e.clientX, y: e.clientY };
-    (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
+    e.currentTarget.setPointerCapture(e.pointerId);
   };
 
   const onPointerMove: React.PointerEventHandler<HTMLDivElement> = (e) => {
@@ -107,7 +99,7 @@ function LightboxModal({
   const onPointerUp: React.PointerEventHandler<HTMLDivElement> = (e) => {
     draggingRef.current = false;
     try {
-      (e.currentTarget as HTMLDivElement).releasePointerCapture(e.pointerId);
+      e.currentTarget.releasePointerCapture(e.pointerId);
     } catch {}
   };
 
@@ -117,16 +109,14 @@ function LightboxModal({
       role="dialog"
       aria-modal="true"
       onMouseDown={(e) => {
-        // 배경 클릭 닫기
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      {/* 상단 바 */}
       <div className="absolute left-0 right-0 top-0 z-10 px-4 py-3">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3">
           <div className="min-w-0">
             <div className="truncate text-sm font-medium text-white/90">{item.alt}</div>
-            <div className="text-xs text-white/50">ESC 닫기 · ← → 이동 · R 리셋 · +/- 확대</div>
+            <div className="text-xs text-white/50">ESC 닫기 · ← → 이동 · +/- 확대</div>
           </div>
 
           <div className="flex items-center gap-2">
@@ -155,25 +145,38 @@ function LightboxModal({
         </div>
       </div>
 
-      {/* 좌우 네비 */}
       <button
         type="button"
         aria-label="이전"
         onClick={onPrev}
-        className="absolute left-4 top-1/2 z-10 -translate-y-1/2 grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-white/5 text-white/80 hover:bg-white/10"
+        className="absolute left-4 top-1/2 z-10 -translate-y-1/2
+                  grid h-12 w-12 place-items-center
+                  rounded-full
+                  border border-white/20
+                  bg-black/70 text-white
+                  shadow-[0_8px_30px_rgba(0,0,0,0.7)]
+                  backdrop-blur
+                  hover:bg-black/85 active:scale-[0.96]"
       >
-        ‹
+        <span className="text-2xl leading-none">‹</span>
       </button>
+
       <button
         type="button"
         aria-label="다음"
         onClick={onNext}
-        className="absolute right-4 top-1/2 z-10 -translate-y-1/2 grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-white/5 text-white/80 hover:bg-white/10"
+        className="absolute right-4 top-1/2 z-10 -translate-y-1/2
+                  grid h-12 w-12 place-items-center
+                  rounded-full
+                  border border-white/20
+                  bg-black/70 text-white
+                  shadow-[0_8px_30px_rgba(0,0,0,0.7)]
+                  backdrop-blur
+                  hover:bg-black/85 active:scale-[0.96]"
       >
-        ›
+        <span className="text-2xl leading-none">›</span>
       </button>
 
-      {/* 이미지 뷰 */}
       <div className="absolute inset-0 pt-16">
         <div className="mx-auto flex h-full max-w-6xl items-center justify-center px-4 pb-6" onWheel={onWheel}>
           <div
@@ -182,6 +185,7 @@ function LightboxModal({
             onPointerMove={onPointerMove}
             onPointerUp={onPointerUp}
             onPointerCancel={onPointerUp}
+            style={{ touchAction: "none" }}
           >
             <div
               className="absolute inset-0"
@@ -230,12 +234,23 @@ export default function CertificateSection() {
   const prevLightbox = () => setLightboxIndex((i) => (i - 1 + awardItems.length) % awardItems.length);
   const nextLightbox = () => setLightboxIndex((i) => (i + 1) % awardItems.length);
 
+  // ✅ 네이티브 캐러셀
+  const stripRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollByCards = (dir: -1 | 1) => {
+    const el = stripRef.current;
+    if (!el) return;
+
+    // 카드 폭(대략) + gap 만큼
+    const card = el.querySelector<HTMLElement>("[data-card]");
+    const cardW = card ? card.offsetWidth : 260;
+    el.scrollBy({ left: dir * (cardW + 14), behavior: "smooth" });
+  };
+
   return (
     <section id="certificates" className="bg-black py-24 px-6 md:px-12 lg:px-20">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 md:items-center">
-        {/* ---------------------------- */}
-        {/* 텍스트 설명 영역 */}
-        {/* ---------------------------- */}
+        {/* 텍스트 */}
         <div className="space-y-6">
           <p className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs tracking-[0.25em] text-zinc-400 uppercase">
             Official Certificates
@@ -275,19 +290,14 @@ export default function CertificateSection() {
             </div>
           </div>
 
-          <p className="text-xs text-zinc-500">
-            * 안정적인 품질·위생·공정 관리 기준을 충족한 업체에게만 부여되는 국가 차원의 인증입니다.
-          </p>
+          <p className="text-xs text-zinc-500">* 안정적인 품질·위생·공정 관리 기준을 충족한 업체에게만 부여되는 국가 차원의 인증입니다.</p>
         </div>
 
-        {/* ---------------------------- */}
-        {/* 상장 + 하단 스와이프 영역 */}
-        {/* ---------------------------- */}
+        {/* 우측 */}
         <div className="relative">
-          {/* Glow 배경 */}
           <div className="pointer-events-none absolute -inset-10 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.18),_transparent_60%)] opacity-60" />
 
-          {/* 상장 이미지 카드 */}
+          {/* 상장 카드 */}
           <div className="relative mx-auto max-w-md">
             <div className="relative rounded-3xl border border-white/15 bg-zinc-950/90 p-3 shadow-[0_0_60px_rgba(0,0,0,0.8)] backdrop-blur">
               <div className="relative overflow-hidden rounded-2xl border border-white/15 bg-zinc-900 shadow-lg rotate-[-2deg]">
@@ -297,6 +307,7 @@ export default function CertificateSection() {
                   width={900}
                   height={1200}
                   className="h-full w-full object-cover"
+                  priority
                 />
               </div>
 
@@ -308,30 +319,32 @@ export default function CertificateSection() {
                     width={900}
                     height={1200}
                     className="h-full w-full object-cover"
+                    priority
                   />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* 스와이프 영역 */}
+          {/* 네이티브 캐러셀 */}
           <div className="mt-16">
             <div className="mb-4 flex items-end justify-between gap-4">
               <h3 className="text-xl font-semibold text-white md:text-2xl">수상경력 및 특허</h3>
 
-              {/* selector 네비게이션 (ref/useEffect 없음) */}
               <div className="flex items-center gap-2">
                 <button
                   type="button"
                   aria-label="이전"
-                  className="awardPrev grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/5 text-white/80 hover:bg-white/10 active:scale-[0.98]"
+                  onClick={() => scrollByCards(-1)}
+                  className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/5 text-white/80 hover:bg-white/10 active:scale-[0.98]"
                 >
                   ‹
                 </button>
                 <button
                   type="button"
                   aria-label="다음"
-                  className="awardNext grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/5 text-white/80 hover:bg-white/10 active:scale-[0.98]"
+                  onClick={() => scrollByCards(1)}
+                  className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/5 text-white/80 hover:bg-white/10 active:scale-[0.98]"
                 >
                   ›
                 </button>
@@ -339,44 +352,48 @@ export default function CertificateSection() {
             </div>
 
             <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur">
-              <Swiper
-                modules={[Navigation]}
-                navigation={{
-                  prevEl: ".awardPrev",
-                  nextEl: ".awardNext",
+              <div
+                ref={stripRef}
+                className="flex gap-3 overflow-x-auto scroll-smooth snap-x snap-mandatory select-none"
+                style={{
+                  WebkitOverflowScrolling: "touch",
+                  overscrollBehaviorX: "contain",
                 }}
-                spaceBetween={14}
-                slidesPerView={1.15}
-                breakpoints={{
-                  640: { slidesPerView: 2.2, spaceBetween: 16 },
-                  1024: { slidesPerView: 3.2, spaceBetween: 18 },
-                }}
-                className="select-none"
               >
+                {/* 좌측 패딩용 */}
+                <div className="w-1 shrink-0" />
+
                 {awardItems.map((item, idx) => (
-                  <SwiperSlide key={idx}>
-                    <button
-                      type="button"
-                      onClick={() => openLightbox(idx)}
-                      className="group w-full text-left"
-                      aria-label={`${item.alt} 크게 보기`}
-                    >
-                      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/60 shadow-[0_0_30px_rgba(0,0,0,0.45)]">
-                        <div className="relative aspect-[4/5] w-full">
-                          <Image
-                            src={item.src}
-                            alt={item.alt}
-                            fill
-                            sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 30vw"
-                            className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                          />
-                          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-black/0" />
-                        </div>
+                  <button
+                    key={item.src}
+                    type="button"
+                    onClick={() => openLightbox(idx)}
+                    className="snap-start shrink-0 w-[72%] sm:w-[44%] lg:w-[30%] text-left"
+                    aria-label={`${item.alt} 크게 보기`}
+                    data-card
+                  >
+                    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/60 shadow-[0_0_30px_rgba(0,0,0,0.45)]">
+                      <div className="relative aspect-[4/5] w-full">
+                        <img
+                          src={item.src}
+                          alt={item.alt}
+                          loading="eager"
+                          draggable={false}
+                          className="absolute inset-0 h-full w-full object-cover"
+                        />
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-black/0" />
                       </div>
-                    </button>
-                  </SwiperSlide>
+                    </div>
+                  </button>
                 ))}
-              </Swiper>
+
+                {/* 우측 패딩용 */}
+                <div className="w-4 shrink-0" />
+              </div>
+
+              <div className="mt-3 text-xs text-white/40">
+                * 좌우로 스와이프해서 확인 가능합니다.
+              </div>
             </div>
           </div>
         </div>
