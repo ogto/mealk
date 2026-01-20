@@ -258,7 +258,7 @@ export default function CertificateSection() {
 
           <h2 className="text-3xl font-semibold leading-tight md:text-4xl">
             대한민국이 인정한
-            <br className="hidden sm:block" />
+            <br />
             숙련 기술력
           </h2>
 
